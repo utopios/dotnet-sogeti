@@ -21,16 +21,16 @@ namespace ContactAspNet.Controllers
         }
 
         //[Route("display")]
-        [HttpGet("display")]
-        public string AfficherContact()
+        [HttpGet("display/{id}")]
+        public string AfficherContact(int id)
         {
-            return "Afficher contact";
+            return "Afficher contact "+id;
         }
         //[Route("delete")]
-        [HttpDelete("delete")]
-        public string SupprimerContact()
+        [HttpDelete("delete/{id}")]
+        public string SupprimerContact(int id)
         {
-            return "Supprimer Contact";
+            return "Supprimer Contact "+id;
         }
     }
 }

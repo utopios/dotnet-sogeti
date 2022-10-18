@@ -20,10 +20,10 @@ namespace coursAspNetCore.Controllers
             return "hello from index";
         }
 
-        [HttpGet("url_data/{arg1}")]
-        public string ActionWithArg(int arg1)
+        [HttpGet("url_data/{arg1}/{arg2}")]
+        public string ActionWithArg(int arg1, int arg2)
         {
-            return arg1.ToString();
+            return (arg1 + arg2).ToString();
         }
     }
 }
