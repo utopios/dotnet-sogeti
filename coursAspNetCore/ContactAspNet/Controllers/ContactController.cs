@@ -6,24 +6,28 @@ namespace ContactAspNet.Controllers
     public class ContactController : ControllerBase
     {
         //Route Ajouter contact
-        [Route("add")]
+        //[Route("add")]
+        [HttpPost("add")]
         public string AddContact()
         {
             return "Ajouter contact";
         }
 
-        [Route("")]
+        //[Route("")]
+        [HttpGet("")]
         public string AfficherContacts()
         {
             return "Afficher contacts";
         }
 
-        [Route("display")]
+        //[Route("display")]
+        [HttpGet("display")]
         public string AfficherContact()
         {
             return "Afficher contact";
         }
-        [Route("delete")]
+        //[Route("delete")]
+        [HttpDelete("delete")]
         public string SupprimerContact()
         {
             return "Supprimer Contact";
