@@ -25,5 +25,20 @@ namespace coursAspNetCore.Controllers
         {
             return (arg1 + arg2).ToString();
         }
+
+        [HttpPost("form_data")]
+        //FromForm => form-data ou x-www-form-urlencoded
+        public string ActionFormData([FromForm]string arg1, [FromForm] string arg2)
+        {
+            return arg1 + arg2;
+        }
+
+
+        [HttpPost("form_body")]
+        //FromBody => body json, text, 
+        public string ActionFormBody([FromBody] WeatherForecast weather)
+        {
+            return weather.ToString();
+        }
     }
 }
