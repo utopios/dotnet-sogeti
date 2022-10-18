@@ -21,7 +21,7 @@ namespace ContactAspNet.Controllers
         [Route("display")]
         public string AfficherContact()
         {
-            return "Afficher contacts";
+            return "Afficher contact";
         }
         [Route("delete")]
         public string SupprimerContact()

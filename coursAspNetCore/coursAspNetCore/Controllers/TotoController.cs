@@ -6,13 +6,15 @@ namespace coursAspNetCore.Controllers
     [Route("[controller]")]
     public class TotoController : ControllerBase
     {
-        [Route("")]
+        //[Route("")]
+        [HttpGet("")]
         public string Index()
         {
             return "Index";
         }
 
-        [Route("titi")]
+        //[Route("titi")]
+        [HttpPost("titi")]
         public string Titi()
         {
             return "hello from index";
