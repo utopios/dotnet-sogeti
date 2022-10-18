@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "coursAspNetCore", "coursAsp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoursAspNetCoreMVC", "CoursAspNetCoreMVC\CoursAspNetCoreMVC.csproj", "{5EE00924-1A96-412C-82A5-40BBBA3C1584}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactAspNet", "ContactAspNet\ContactAspNet.csproj", "{8F9C19CD-6408-4308-B50C-7022CBB60437}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{5EE00924-1A96-412C-82A5-40BBBA3C1584}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5EE00924-1A96-412C-82A5-40BBBA3C1584}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5EE00924-1A96-412C-82A5-40BBBA3C1584}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F9C19CD-6408-4308-B50C-7022CBB60437}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F9C19CD-6408-4308-B50C-7022CBB60437}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F9C19CD-6408-4308-B50C-7022CBB60437}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F9C19CD-6408-4308-B50C-7022CBB60437}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
