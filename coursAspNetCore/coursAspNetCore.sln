@@ -5,6 +5,8 @@ VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "coursAspNetCore", "coursAspNetCore\coursAspNetCore.csproj", "{30A229BD-8360-4674-BCBD-63BA52C6EE4F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoursAspNetCoreMVC", "CoursAspNetCoreMVC\CoursAspNetCoreMVC.csproj", "{5EE00924-1A96-412C-82A5-40BBBA3C1584}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{30A229BD-8360-4674-BCBD-63BA52C6EE4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30A229BD-8360-4674-BCBD-63BA52C6EE4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30A229BD-8360-4674-BCBD-63BA52C6EE4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EE00924-1A96-412C-82A5-40BBBA3C1584}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EE00924-1A96-412C-82A5-40BBBA3C1584}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EE00924-1A96-412C-82A5-40BBBA3C1584}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EE00924-1A96-412C-82A5-40BBBA3C1584}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
