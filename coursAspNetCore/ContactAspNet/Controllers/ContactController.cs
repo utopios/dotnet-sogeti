@@ -8,9 +8,9 @@ namespace ContactAspNet.Controllers
         //Route Ajouter contact
         //[Route("add")]
         [HttpPost("add")]
-        public string AddContact()
+        public string AddContact([FromBody] Contact contact)
         {
-            return "Ajouter contact";
+            return "Ajout contact "+contact;
         }
 
         //[Route("")]
