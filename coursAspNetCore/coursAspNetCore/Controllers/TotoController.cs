@@ -40,5 +40,25 @@ namespace coursAspNetCore.Controllers
         {
             return weather.ToString();
         }
+
+        [HttpGet("weather")]
+        public WeatherForecast TotoWeather()
+        {
+            return new WeatherForecast()
+            {
+                TemperatureC = 19
+            };
+        }
+
+        [HttpGet("weathers")]
+        public List<WeatherForecast> TotoWeathers()
+        {
+            return new List<WeatherForecast>()
+            {
+                new WeatherForecast() { TemperatureC = 19},
+                new WeatherForecast() { TemperatureC = 18},
+                new WeatherForecast() { TemperatureC = 17},
+            };
+        }
     }
 }
