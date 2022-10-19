@@ -40,7 +40,7 @@ namespace VideoStore.Repositories
 
         public override List<Customer> Search(Func<Customer, bool> searchMethod)
         {
-            throw new NotImplementedException();
+            return _dataDbContext.Customers.Where(searchMethod).ToList();
         }
     }
 }
