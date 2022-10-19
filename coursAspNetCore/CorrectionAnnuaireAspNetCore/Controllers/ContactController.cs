@@ -7,16 +7,17 @@ namespace CorrectionAnnuaireAspNetCore.Controllers
     [Route("[controller]")]
     public class ContactController : ControllerBase
     {
-        private ContactRepository contactRepository;
-        public ContactController()
+        private ContactRepository _contactRepository;
+        public ContactController(ContactRepository contactRepository)
         {
-            contactRepository = new ContactRepository();
+            //contactRepository = new ContactRepository();
+            _contactRepository = contactRepository;
         }
 
         [HttpPost("add")]
         public Contact AddContact([FromBody] Contact contact)
         {
-            if(contactRepository.Save(contact))
+            if(_contactRepository.Save(contact))
             {
                 return contact;
             }
@@ -27,29 +28,29 @@ namespace CorrectionAnnuaireAspNetCore.Controllers
         [HttpGet("")]
         public List<Contact> AfficherContacts()
         {
-            return contactRepository.FindAll();
+            return _contactRepository.FindAll();
         }
 
         [HttpGet("search/{phone}")]
         public List<Contact> RechercherContacts(string phone)
         {
-            return contactRepository.FindByPhone(phone);
+            return _contactRepository.FindByPhone(phone);
         }
 
         //[Route("display")]
         [HttpGet("display/{id}")]
         public Contact AfficherContact(int id)
         {
-            return contactRepository.FindById(id);
+            return _contactRepository.FindById(id);
         }
         //[Route("delete")]
         [HttpDelete("delete/{id}")]
         public bool SupprimerContact(int id)
         {
-            Contact contact = contactRepository.FindById(id);
+            Contact contact = _contactRepository.FindById(id);
             if(contact != null)
             {
-                return contactRepository.Delete(contact);
+                return _contactRepository.Delete(contact);
             }
             return false;
         }
@@ -57,14 +58,14 @@ namespace CorrectionAnnuaireAspNetCore.Controllers
         [HttpPut("update/{id}")]
         public bool MettreAjour(int id, [FromBody] Contact newcontact)
         {
-            Contact contact = contactRepository.FindById(id);
+            Contact contact = _contactRepository.FindById(id);
             if(contact != null)
             {
                 contact.FirstName = newcontact.FirstName;
                 contact.LastName = newcontact.LastName;
                 contact.Phone = newcontact.Phone;
                 contact.Email = newcontact.Email;
-                return contactRepository.Update();
+                return _contactRepository.Update();
             }
             return false;
         }

@@ -1,9 +1,14 @@
 ﻿using CorrectionAnnuaireAspNetCore.Models;
+using CorrectionAnnuaireAspNetCore.Tools;
 
 namespace CorrectionAnnuaireAspNetCore.Repositories
 {
     public class ContactRepository : BaseRepository<Contact>
     {
+        public ContactRepository(DataDbContext dataContext) : base(dataContext)
+        {
+        }
+
         public override bool Delete(Contact element)
         {
             _dataContext.Contacts.Remove(element);

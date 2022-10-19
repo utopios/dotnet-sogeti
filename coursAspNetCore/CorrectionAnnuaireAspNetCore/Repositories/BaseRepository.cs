@@ -6,9 +6,9 @@ namespace CorrectionAnnuaireAspNetCore.Repositories
     {
         protected DataDbContext _dataContext { get; set; }
 
-        public BaseRepository()
+        public BaseRepository(DataDbContext dataContext)
         {
-            _dataContext = new DataDbContext();
+            _dataContext = dataContext;
         }
 
         public abstract bool Save(T element);
