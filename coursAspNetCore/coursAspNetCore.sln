@@ -9,11 +9,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoursAspNetCoreMVC", "Cours
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContactAspNet", "ContactAspNet\ContactAspNet.csproj", "{8F9C19CD-6408-4308-B50C-7022CBB60437}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CorrectionAnnuaireAspNetCore", "CorrectionAnnuaireAspNetCore\CorrectionAnnuaireAspNetCore.csproj", "{E6A4AF18-1B9B-42C1-BA81-EBD9C155DD02}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CorrectionAnnuaireAspNetCore", "CorrectionAnnuaireAspNetCore\CorrectionAnnuaireAspNetCore.csproj", "{E6A4AF18-1B9B-42C1-BA81-EBD9C155DD02}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VideoStore", "VideoStore\VideoStore\VideoStore.csproj", "{436B9515-927C-4E77-B729-5E59AC13D9B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetVideoStore", "AspNetVideoStore\AspNetVideoStore.csproj", "{2E259700-2F8C-4A8C-825A-9B51663FF3A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetVideoStore", "AspNetVideoStore\AspNetVideoStore.csproj", "{2E259700-2F8C-4A8C-825A-9B51663FF3A1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoursAPIRest", "CoursAPIRest\CoursAPIRest.csproj", "{DA21FC5C-82B3-40BE-BD07-1D702B1995CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CorrectionTodoLists", "CorrectionTodoLists\CorrectionTodoLists.csproj", "{71AAEC3D-E1E3-4255-81EF-45E55E0EC593}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +49,14 @@ Global
 		{2E259700-2F8C-4A8C-825A-9B51663FF3A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E259700-2F8C-4A8C-825A-9B51663FF3A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E259700-2F8C-4A8C-825A-9B51663FF3A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA21FC5C-82B3-40BE-BD07-1D702B1995CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA21FC5C-82B3-40BE-BD07-1D702B1995CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA21FC5C-82B3-40BE-BD07-1D702B1995CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA21FC5C-82B3-40BE-BD07-1D702B1995CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71AAEC3D-E1E3-4255-81EF-45E55E0EC593}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71AAEC3D-E1E3-4255-81EF-45E55E0EC593}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71AAEC3D-E1E3-4255-81EF-45E55E0EC593}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71AAEC3D-E1E3-4255-81EF-45E55E0EC593}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
