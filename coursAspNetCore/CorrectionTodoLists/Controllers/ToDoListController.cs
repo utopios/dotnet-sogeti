@@ -25,19 +25,22 @@ namespace CorrectionTodoLists.Controllers
         }
 
         [HttpGet("{id}")]
-        public ToDoList Get(int id)
+        public IActionResult Get(int id)
         {
-            return _toDoListRepository.FindById(id);
+            ToDoList toDoList = _toDoListRepository.FindById(id);
+            if(toDoList != null)
+                return Ok(toDoList);
+            return NotFound();
         }
 
         [HttpPost]
-        public ToDoList Save([FromBody] ToDoList toDoList)
+        public IActionResult Save([FromBody] ToDoList toDoList)
         {
             if(_toDoListRepository.Save(toDoList))
             {
-                return toDoList;
+                return Ok(toDoList);
             }
-            return null;
+            return StatusCode(500, new {Message = "Erreur serveur"});
         }
         
     }
