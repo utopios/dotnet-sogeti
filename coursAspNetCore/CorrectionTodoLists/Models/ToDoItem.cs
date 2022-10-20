@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace CorrectionTodoLists.Models
 {
@@ -19,6 +20,7 @@ namespace CorrectionTodoLists.Models
 
 
         [ForeignKey("ToDoListId")]
-        public ToDoList ToDoList { get; set; }
+        [JsonIgnore]
+        public ToDoList? ToDoList { get; set; }
     }
 }
