@@ -1,4 +1,5 @@
-﻿using CorrectionTodoLists.Models;
+﻿using CorrectionTodoLists.DTOs;
+using CorrectionTodoLists.Models;
 using CorrectionTodoLists.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
@@ -34,11 +35,17 @@ namespace CorrectionTodoLists.Controllers
         }
 
         [HttpPost]
-        public IActionResult Save([FromBody] ToDoList toDoList)
+        public IActionResult Save([FromBody] TodoListRequestDTO toDoListRequest)
         {
+            ToDoList toDoList = new ToDoList()
+            {
+                Title = toDoListRequest.Title
+            };
+
             if(_toDoListRepository.Save(toDoList))
             {
-                return Ok(toDoList);
+                
+                return Ok(new TodoListResponseDTO() { Title = toDoList.Title, Id = toDoList.Id, EndDate = toDoList.EndDate});
             }
             return StatusCode(500, new {Message = "Erreur serveur"});
         }
