@@ -17,7 +17,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetVideoStore", "AspNetV
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoursAPIRest", "CoursAPIRest\CoursAPIRest.csproj", "{DA21FC5C-82B3-40BE-BD07-1D702B1995CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CorrectionTodoLists", "CorrectionTodoLists\CorrectionTodoLists.csproj", "{71AAEC3D-E1E3-4255-81EF-45E55E0EC593}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CorrectionTodoLists", "CorrectionTodoLists\CorrectionTodoLists.csproj", "{71AAEC3D-E1E3-4255-81EF-45E55E0EC593}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankAccountProject", "BankAccountProject\BankAccountProject.csproj", "{7F2A1C03-60D9-42F5-A85F-D920DAAF616C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankRestAPI", "BankRestAPI\BankRestAPI.csproj", "{F5BF6C29-0F5C-4CCF-88ED-A8DF29797935}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +61,14 @@ Global
 		{71AAEC3D-E1E3-4255-81EF-45E55E0EC593}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71AAEC3D-E1E3-4255-81EF-45E55E0EC593}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71AAEC3D-E1E3-4255-81EF-45E55E0EC593}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F2A1C03-60D9-42F5-A85F-D920DAAF616C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F2A1C03-60D9-42F5-A85F-D920DAAF616C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F2A1C03-60D9-42F5-A85F-D920DAAF616C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F2A1C03-60D9-42F5-A85F-D920DAAF616C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5BF6C29-0F5C-4CCF-88ED-A8DF29797935}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5BF6C29-0F5C-4CCF-88ED-A8DF29797935}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5BF6C29-0F5C-4CCF-88ED-A8DF29797935}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5BF6C29-0F5C-4CCF-88ED-A8DF29797935}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
