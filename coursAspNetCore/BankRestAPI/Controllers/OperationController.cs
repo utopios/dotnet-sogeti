@@ -35,7 +35,7 @@ namespace BankRestAPI.Controllers
                         {
                             AccountId = accountId,
                             Amount = operation.Amount,
-                            OperationDateTime = operation.OperationDateTime
+                            OperationDateTime = operation.OperationDateTime,
                             Id = operation.Id
                         });
                     }
