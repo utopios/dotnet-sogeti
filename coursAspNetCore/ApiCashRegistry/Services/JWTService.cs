@@ -29,8 +29,8 @@ namespace ApiCashRegistry.Services
                     SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Bonjour je suis la clé de sécurité pour générer la JWT")), SecurityAlgorithms.HmacSha256),
                     Subject = new ClaimsIdentity(new Claim[]
                     {
-                        new Claim("role", "admin"),
-                        new Claim("email", user.Email)
+                        new Claim(ClaimTypes.Role, "admin"),
+                        new Claim(ClaimTypes.Email, user.Email)
                     }),
                     Issuer = "sogeti",
                     Audience = "sogeti"
