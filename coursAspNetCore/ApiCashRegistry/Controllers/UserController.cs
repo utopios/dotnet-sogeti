@@ -7,5 +7,9 @@ namespace ApiCashRegistry.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
+
+        //Ajouter un utilisateur DTO (email, password)
+
+        //Réponse DTO (id, email)
     }
 }

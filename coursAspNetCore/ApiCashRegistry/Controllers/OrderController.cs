@@ -7,5 +7,8 @@ namespace ApiCashRegistry.Controllers
     [ApiController]
     public class OrderController : ControllerBase
     {
+
+        //Ajouter une commande => DTO List OrderPorductRequest (id_produit, qty)
+        //Réponse Order => (total, List OrderProductResponse (Name, qty, price, total)
     }
 }
