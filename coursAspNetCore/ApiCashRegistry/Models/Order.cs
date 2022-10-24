@@ -27,5 +27,15 @@ namespace ApiCashRegistry.Models
         {
             Products = new List<OrderProduct>();
         }
+
+        public void UpdateAmount()
+        {
+            decimal total = 0;
+            Products.ForEach(p =>
+            {
+                total += p.Qty * p.Product.Price;
+            });
+            Amount = total;
+        }
     }
 }
