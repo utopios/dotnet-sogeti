@@ -21,9 +21,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CorrectionTodoLists", "Corr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankAccountProject", "BankAccountProject\BankAccountProject.csproj", "{7F2A1C03-60D9-42F5-A85F-D920DAAF616C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankRestAPI", "BankRestAPI\BankRestAPI.csproj", "{F5BF6C29-0F5C-4CCF-88ED-A8DF29797935}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankRestAPI", "BankRestAPI\BankRestAPI.csproj", "{F5BF6C29-0F5C-4CCF-88ED-A8DF29797935}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoursAPIRestJWT", "CoursAPIRestJWT\CoursAPIRestJWT.csproj", "{E83DD993-70F2-4818-8E43-A32A1FF89AEC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoursAPIRestJWT", "CoursAPIRestJWT\CoursAPIRestJWT.csproj", "{E83DD993-70F2-4818-8E43-A32A1FF89AEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiCashRegistry", "ApiCashRegistry\ApiCashRegistry.csproj", "{E1DBBF4A-BAC3-4977-8291-F80EB18F5F84}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +77,10 @@ Global
 		{E83DD993-70F2-4818-8E43-A32A1FF89AEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E83DD993-70F2-4818-8E43-A32A1FF89AEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E83DD993-70F2-4818-8E43-A32A1FF89AEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1DBBF4A-BAC3-4977-8291-F80EB18F5F84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1DBBF4A-BAC3-4977-8291-F80EB18F5F84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1DBBF4A-BAC3-4977-8291-F80EB18F5F84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1DBBF4A-BAC3-4977-8291-F80EB18F5F84}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
