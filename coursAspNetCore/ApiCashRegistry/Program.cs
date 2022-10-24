@@ -35,7 +35,13 @@ builder.Services.AddAuthentication(a =>
     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Bonjour je suis la clé de sécurité pour générer la JWT")),
 
 });
-builder.Services.AddAuthorization();
+builder.Services.AddAuthorization((builder) =>
+{
+    builder.AddPolicy("admin", options =>
+    {
+        options.RequireRole("admin");
+    });
+});
 
 
 var app = builder.Build();

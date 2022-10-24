@@ -19,7 +19,7 @@ namespace ApiCashRegistry.Controllers
         }
 
         //Ajouter un produit, DTO (name, price, stock)
-        [Authorize]
+        [Authorize(Policy ="admin")]
         [HttpPost]
         public IActionResult Post([FromBody] ProductRequestDTO productRequestDTO)
         {
