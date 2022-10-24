@@ -1,6 +1,9 @@
 using ApiCashRegistry.Repositories;
 using ApiCashRegistry.Services;
 using ApiCashRegistry.Tools;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,7 +20,22 @@ builder.Services.AddScoped<OrderRespository>();
 builder.Services.AddScoped<JWTService>();
 
 builder.Services.AddDbContext<DataDbContext>();
-builder.Services.AddAuthentication();
+builder.Services.AddAuthentication(a =>
+{
+    a.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    a.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(o => o.TokenValidationParameters = new TokenValidationParameters()
+{
+    ValidateIssuerSigningKey = true,
+    ValidateIssuer = true,
+    ValidIssuer = "sogeti",
+    ValidateLifetime = true,
+    ValidateAudience = true,
+    ValidAudience = "sogeti",
+    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Bonjour je suis la clé de sécurité pour générer la JWT")),
+
+});
+builder.Services.AddAuthorization();
 
 
 var app = builder.Build();
@@ -29,6 +47,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

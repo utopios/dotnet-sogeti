@@ -1,6 +1,7 @@
 ﻿using ApiCashRegistry.DTOs;
 using ApiCashRegistry.Models;
 using ApiCashRegistry.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,6 +19,7 @@ namespace ApiCashRegistry.Controllers
         }
 
         //Ajouter un produit, DTO (name, price, stock)
+        [Authorize]
         [HttpPost]
         public IActionResult Post([FromBody] ProductRequestDTO productRequestDTO)
         {

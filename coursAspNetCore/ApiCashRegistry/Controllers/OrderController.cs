@@ -1,53 +1,66 @@
 ﻿using ApiCashRegistry.DTOs;
 using ApiCashRegistry.Models;
 using ApiCashRegistry.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace ApiCashRegistry.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class OrderController : ControllerBase
     {
-        private OrderRespository _orderRespository { get; set; }
-        private ProductRepository _productRespository { get; set; }
+        private OrderRespository _orderRespository;
+        private ProductRepository _productRespository;
+        private UserRespository _userRespository;
 
-        public OrderController(OrderRespository orderRespository, ProductRepository productRespository)
+        public OrderController(OrderRespository orderRespository, ProductRepository productRespository, UserRespository userRespository)
         {
             _orderRespository = orderRespository;
             _productRespository = productRespository;
+            _userRespository = userRespository;
         }
 
 
 
         //Ajouter une commande => DTO List OrderPorductRequest (id_produit, qty)
         [HttpPost]
+        [Authorize]
         public IActionResult Post([FromBody] OrderRequestDTO orderRequestDTO)
         {
             Order order = new Order();
-            orderRequestDTO.Products.ForEach(p =>
+            var userClaims = HttpContext.User;
+            string email = userClaims.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email).Value;
+            CashRegistryUser user = _userRespository.SearchOne(u => u.Email == email);
+            if(user != null)
             {
-                Product product = _productRespository.FindById(p.ProductId);
-                if (product != null)
+                orderRequestDTO.Products.ForEach(p =>
                 {
-                    OrderProduct orderProduct = new OrderProduct() { Product = product, Order = order, Qty = p.Qty };
-                    order.Products.Add(orderProduct);
-                    product.Stock -= p.Qty;
-                }
-            });
-            order.UpdateAmount();
-            if(_orderRespository.Save(order))
-            {
-                OrderResponseDTO response = new OrderResponseDTO();
-                response.TotalAmount = order.Amount;
-                order.Products.ForEach(p =>
-                {
-                    response.Products.Add(new OrderProductResponseDTO() { Name = p.Product.Name, Qty = p.Qty, Price = p.Product.Price, TotalAmount = p.Qty * p.Product.Price });
+                    Product product = _productRespository.FindById(p.ProductId);
+                    if (product != null)
+                    {
+                        OrderProduct orderProduct = new OrderProduct() { Product = product, Order = order, Qty = p.Qty };
+                        order.Products.Add(orderProduct);
+                        product.Stock -= p.Qty;
+                    }
                 });
-                return Ok(response);
+                order.User = user;
+                order.UpdateAmount();
+                if (_orderRespository.Save(order))
+                {
+                    OrderResponseDTO response = new OrderResponseDTO();
+                    response.TotalAmount = order.Amount;
+                    order.Products.ForEach(p =>
+                    {
+                        response.Products.Add(new OrderProductResponseDTO() { Name = p.Product.Name, Qty = p.Qty, Price = p.Product.Price, TotalAmount = p.Qty * p.Product.Price });
+                    });
+                    return Ok(response);
+                }
+                return StatusCode(500);
             }
-            return StatusCode(500);
+            return Unauthorized();
         }
 
         //Réponse Order => (total, List OrderProductResponse (Name, qty, price, total)
