@@ -1,6 +1,8 @@
-﻿@page "/first"
-<h3>First</h3>
+﻿@page "/first/{Id:int}"
+<h3>First @Id</h3>
 
 @code {
 
+    [Parameter]
+    public int? Id { get; set; }
 }
