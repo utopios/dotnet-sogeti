@@ -1,5 +1,9 @@
 ﻿@using CoursBlazorWebAssembly.Components
 @using CoursBlazorWebAssembly.Models
+@using CoursBlazorWebAssembly.Services
+
+@*Injection d'un service de type productService *@
+@inject ProductService _productService;
 
 @page "/products"
 <h3>Liste des produits</h3>
@@ -11,11 +15,12 @@
 @code {
     public List<Product> Products { get; set; }
 
-    public ProductPage() {
-        Products = new List<Product>() {
-            new Product() {Name = "P1", Description= "Produit 1", Price = 100},
-            new Product() {Name = "P3", Description= "Produit 3", Price = 300},
-            new Product() {Name = "P2", Description= "Produit 2", Price = 200},
-        };
+    //la méthode est appelée juste après la création du composant
+    protected override void OnInitialized()
+    {
+        Products = _productService.Products;
     }
+
+    public ProductPage() {
+    }   
 }
