@@ -1,0 +1,22 @@
+﻿
+<div>
+    Titre du produit : @Name
+</div>
+<div>
+    Prix: @Price €
+</div>
+<div>
+    Description: @Description
+</div>
+@code {
+
+    [Parameter]
+    public string Name { get; set; }
+
+    [Parameter]
+    public string Description { get; set; }
+
+    [Parameter]
+    public decimal Price { get; set; }
+
+}

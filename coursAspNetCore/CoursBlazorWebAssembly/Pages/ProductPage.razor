@@ -1,0 +1,21 @@
+﻿@using CoursBlazorWebAssembly.Components
+@using CoursBlazorWebAssembly.Models
+
+@page "/products"
+<h3>Liste des produits</h3>
+
+@foreach(Product p in Products) {
+    <ProductComponent Name="@p.Name" Price="@p.Price" Description="@p.Description"></ProductComponent>
+}
+
+@code {
+    public List<Product> Products { get; set; }
+
+    public ProductPage() {
+        Products = new List<Product>() {
+            new Product() {Name = "P1", Description= "Produit 1", Price = 100},
+            new Product() {Name = "P3", Description= "Produit 3", Price = 300},
+            new Product() {Name = "P2", Description= "Produit 2", Price = 200},
+        };
+    }
+}
