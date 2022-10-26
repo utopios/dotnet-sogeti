@@ -5,9 +5,9 @@
 <div>
     Prix: @Price €
 </div>
-<div>
+@*<div>
     Description: @Description
-</div>
+</div>*@
 <div>
     <NavLink href="@Link">Detail produit</NavLink>
 </div>
@@ -16,8 +16,8 @@
     [Parameter]
     public string Name { get; set; }
 
-    [Parameter]
-    public string Description { get; set; }
+    //[Parameter]
+    //public string Description { get; set; }
 
     [Parameter]
     public decimal Price { get; set; }

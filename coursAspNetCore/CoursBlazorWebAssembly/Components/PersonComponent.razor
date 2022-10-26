@@ -5,6 +5,9 @@
 <div>
     Prénom : @FirstName
 </div>
+<div>
+   <button @onclick="DecreaseAge">-</button> @Age <button @onclick="IncreaseAge">+</button>
+</div>
 @code {
     [Parameter]
     public string FirstName { get; set; }
@@ -12,5 +15,17 @@
     [Parameter]
     public string LastName { get; set; }
 
-    
+    public int Age { get; set; }
+
+    public PersonComponent() {
+        Age = 0;
+    }
+
+    public void DecreaseAge() {
+        Age--;
+    }
+
+    public void IncreaseAge() {
+        Age++;
+    }
 }
