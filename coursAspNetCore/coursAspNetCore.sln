@@ -25,7 +25,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankRestAPI", "BankRestAPI\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoursAPIRestJWT", "CoursAPIRestJWT\CoursAPIRestJWT.csproj", "{E83DD993-70F2-4818-8E43-A32A1FF89AEC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiCashRegistry", "ApiCashRegistry\ApiCashRegistry.csproj", "{E1DBBF4A-BAC3-4977-8291-F80EB18F5F84}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiCashRegistry", "ApiCashRegistry\ApiCashRegistry.csproj", "{E1DBBF4A-BAC3-4977-8291-F80EB18F5F84}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoursBlazorWebAssembly", "CoursBlazorWebAssembly\CoursBlazorWebAssembly.csproj", "{1C03A43B-DB06-49A9-A65E-8B5AE1AC5693}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +83,10 @@ Global
 		{E1DBBF4A-BAC3-4977-8291-F80EB18F5F84}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E1DBBF4A-BAC3-4977-8291-F80EB18F5F84}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E1DBBF4A-BAC3-4977-8291-F80EB18F5F84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C03A43B-DB06-49A9-A65E-8B5AE1AC5693}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C03A43B-DB06-49A9-A65E-8B5AE1AC5693}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C03A43B-DB06-49A9-A65E-8B5AE1AC5693}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C03A43B-DB06-49A9-A65E-8B5AE1AC5693}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
