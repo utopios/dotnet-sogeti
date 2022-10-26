@@ -1,0 +1,16 @@
+﻿<h3>Personne</h3>
+<div>
+    Nom : @LastName
+</div>
+<div>
+    Prénom : @FirstName
+</div>
+@code {
+    [Parameter]
+    public string FirstName { get; set; }
+
+    [Parameter]
+    public string LastName { get; set; }
+
+    
+}

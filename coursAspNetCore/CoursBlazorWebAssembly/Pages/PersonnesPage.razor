@@ -1,0 +1,19 @@
+﻿@using CoursBlazorWebAssembly.Components
+@using CoursBlazorWebAssembly.Models
+@page "/liste"
+<h3>Liste personnes</h3>
+
+@foreach(Personne p in ListPersonnes) {
+    <PersonComponent FirstName="@p.FirstName" LastName="@p.LastName"></PersonComponent>
+}
+
+@code {
+    public List<Personne> ListPersonnes { get; set; }
+
+    public PersonnesPage() {
+        ListPersonnes = new List<Personne>() {
+            new Personne() {FirstName = "toto", LastName = "titi"},
+            new Personne() {FirstName = "minet", LastName = "titi"},
+        };
+    }
+}
