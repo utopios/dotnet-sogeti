@@ -1,0 +1,25 @@
+﻿@using CoursBlazorWebAssembly.Components
+@using CoursBlazorWebAssembly.Models
+@using CoursBlazorWebAssembly.Services
+
+@*Injection d'un service de type productService *@
+@inject ProductService _productService;
+
+@page "/products"
+<h3>Liste des produits</h3>
+
+@foreach(Product p in Products) {
+    <ProductComponent Name="@p.Name" Price="@p.Price" Description="@p.Description"></ProductComponent>
+}
+
+@code {
+    public List<Product> Products { get; set; }
+
+    //la méthode est appelée juste après la création du composant
+    protected override void OnInitialized()
+    {
+        Products = _productService.Products;
+    }
+
+   
+}

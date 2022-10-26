@@ -8,6 +8,9 @@
 <div>
     Description: @Description
 </div>
+<div>
+    <NavLink href="@Link">Detail produit</NavLink>
+</div>
 @code {
 
     [Parameter]
@@ -19,4 +22,6 @@
     [Parameter]
     public decimal Price { get; set; }
 
+
+    public string Link { get => "/product/" + Name; }
 }
