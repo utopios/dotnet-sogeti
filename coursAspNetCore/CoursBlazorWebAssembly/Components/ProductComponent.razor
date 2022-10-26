@@ -1,4 +1,5 @@
-﻿
+﻿@using CoursBlazorWebAssembly.Services
+@inject ProductService _productService
 <div>
     Titre du produit : @Name
 </div>
@@ -10,6 +11,7 @@
 </div>*@
 <div>
     <NavLink href="@Link">Detail produit</NavLink>
+    <button @onclick="Delete">supprimer</button>
 </div>
 @code {
 
@@ -24,4 +26,14 @@
 
 
     public string Link { get => "/product/" + Name; }
+
+
+    //Un paramètre pour passer une méthode à l'intérieur d'un composant
+    [Parameter]
+    public EventCallback<string> OnDeletedProduct { get; set; }
+
+    public void Delete() {
+        //_productService.Delete(Name);
+        OnDeletedProduct.InvokeAsync(Name);
+    }
 }

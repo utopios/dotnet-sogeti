@@ -14,5 +14,11 @@ namespace CoursBlazorWebAssembly.Services
             new Product() {Name = "P2", Description= "Produit 2", Price = 200},
             };
         }
+
+        public void Delete(string name)
+        {
+            Products.RemoveAll(p => p.Name == name);
+            //Products = new List<Product>(Products);
+        }
     }
 }
