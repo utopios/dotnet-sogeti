@@ -4,7 +4,7 @@
 @inject NavigationManager _navigationManager;
 @page "/form"
 <h3>Formulaire Contact</h3>
-<EditForm Model="@Contact" OnSubmit="@AddContact">
+<EditForm Model="this" OnSubmit="@AddContact">
     <div>
         <InputText @bind-Value="Contact.FirstName" placeholder="Prénom du contact" />
     </div>
@@ -14,18 +14,49 @@
     <div>
         <InputText @bind-Value="Contact.Phone" placeholder="Téléphone du contact" />
     </div>
+    <a @onclick="AddNbEmails">Ajouter un email</a>
+    @for(int i=1; i <= NbEmails; i++) {
+        <div>
+            @*<InputText @bind-Value="Mails[0]" />*@
+            @{
+                var placeholder = "Mail N° " + i;
+                var index = i - 1;
+            }
+            <input value="@Mails[i]" placeholder="@placeholder" @oninput="(e) =>SetValueMail(e.Value.ToString(), index)" />
+        </div>
+    }
     <div>
         <button type="submit">Valider</button>
     </div>
 </EditForm>
 @code {
-    public Contact Contact = new Contact();
+    public Contact Contact { get; set; }
 
+    public int NbEmails { get; set; }
+
+    public List<string> Mails { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Contact = new();
+        Mails = new();
+        NbEmails = 1;
+        Mails.Add(null);
+    }
 
     public void AddContact() {
         if(_contactService.AddContact(Contact)) {
             _navigationManager.NavigateTo("/");
         }
+    }
+
+    public void SetValueMail(string val, int index) {
+        Mails.Insert(index, val);
+    }
+
+    public void AddNbEmails() {
+        NbEmails++;
+        Mails.Add(null);
     }
 
 }
