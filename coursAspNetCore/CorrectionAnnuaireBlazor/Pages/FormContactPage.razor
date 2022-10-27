@@ -15,14 +15,15 @@
         <InputText @bind-Value="Contact.Phone" placeholder="Téléphone du contact" />
     </div>
     <a @onclick="AddNbEmails">Ajouter un email</a>
-    @for(int i=1; i <= NbEmails; i++) {
+    @for(int i=0; i < NbEmails; i++) {
         <div>
             @*<InputText @bind-Value="Mails[0]" />*@
             @{
                 var placeholder = "Mail N° " + i;
-                var index = i - 1;
+                var val = Mails[i];
+                var index = i;
             }
-            <input value="@Mails[i]" placeholder="@placeholder" @oninput="(e) =>SetValueMail(e.Value.ToString(), index)" />
+            <input value="@val" placeholder="@placeholder" @oninput="(e) =>SetValueMail(e.Value.ToString(), index)" />
         </div>
     }
     <div>
@@ -45,13 +46,18 @@
     }
 
     public void AddContact() {
+
+        for(int i=0; i < Mails.Count; i++) {
+            Contact.Emails.Add(new Email() { Id = i + 1, Mail = Mails[i] });
+        }
+
         if(_contactService.AddContact(Contact)) {
             _navigationManager.NavigateTo("/");
         }
     }
 
     public void SetValueMail(string val, int index) {
-        Mails.Insert(index, val);
+        Mails[index] = val;
     }
 
     public void AddNbEmails() {
