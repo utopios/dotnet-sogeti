@@ -1,0 +1,31 @@
+﻿@using CorrectionAnnuaireBlazor.Models
+@using CorrectionAnnuaireBlazor.Services
+@inject ContactService _contactService; 
+@inject NavigationManager _navigationManager;
+@page "/form"
+<h3>Formulaire Contact</h3>
+<EditForm Model="@Contact" OnSubmit="@AddContact">
+    <div>
+        <InputText @bind-Value="Contact.FirstName" placeholder="Prénom du contact" />
+    </div>
+    <div>
+        <InputText @bind-Value="Contact.LastName" placeholder="Nom du contact" />
+    </div>
+    <div>
+        <InputText @bind-Value="Contact.Phone" placeholder="Téléphone du contact" />
+    </div>
+    <div>
+        <button type="submit">Valider</button>
+    </div>
+</EditForm>
+@code {
+    public Contact Contact = new Contact();
+
+
+    public void AddContact() {
+        if(_contactService.AddContact(Contact)) {
+            _navigationManager.NavigateTo("/");
+        }
+    }
+
+}

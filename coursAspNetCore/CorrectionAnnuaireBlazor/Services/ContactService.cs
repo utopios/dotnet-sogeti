@@ -54,5 +54,12 @@ namespace CorrectionAnnuaireBlazor.Services
         {
             return Contacts.FirstOrDefault(c => c.Id == id);
         }
+
+        public bool AddContact(Contact contact)
+        {
+            contact.Id = Contacts[Contacts.Count - 1].Id + 1;
+            Contacts.Add(contact);
+            return true;
+        }
     }
 }
