@@ -1,0 +1,33 @@
+﻿@using CorrectionAnnuaireBlazor.Components
+@using CorrectionAnnuaireBlazor.Models
+@using CorrectionAnnuaireBlazor.Services
+@inject ContactService _contactService;
+@page "/contact/{Id:int}"
+
+@if(Contact == null) {
+    <div>Aucun contact avec cet id</div>
+}else {
+    <div>
+        Nom : @Contact.LastName Prénom : @Contact.FirstName Téléphone: @Contact.Phone
+        @foreach(Email email in Contact.Emails) {
+            <EmailComponent Email="@email" OnDeletedEmail="@DeleteEmail"></EmailComponent>
+        }
+    </div>
+}
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+    public Contact? Contact { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Contact = _contactService.FindById(Id);
+    }
+
+    public void DeleteEmail(int emailId) {
+        if(_contactService.DeleteEmail(Id, emailId)){
+            StateHasChanged();
+        }
+    }
+}

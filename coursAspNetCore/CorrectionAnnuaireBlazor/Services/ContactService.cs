@@ -49,5 +49,10 @@ namespace CorrectionAnnuaireBlazor.Services
             }
             return false;
         }
+
+        public Contact? FindById(int id)
+        {
+            return Contacts.FirstOrDefault(c => c.Id == id);
+        }
     }
 }
