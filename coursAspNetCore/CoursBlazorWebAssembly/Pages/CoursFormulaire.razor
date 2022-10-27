@@ -1,0 +1,20 @@
+﻿@page "/formulaire"
+<h3>CoursFormulaire</h3>
+<EditForm Model="this" OnSubmit="@SubmitForm">
+    <InputText @bind-Value="LastName" placeholder="Merci de saisir le nom : "></InputText>
+    <InputText @bind-Value="FirstName" placeholder="Merci de saisir le prénom : "></InputText>
+    <button type="submit">Valider</button>
+</EditForm>
+<div>
+    @Name
+</div>
+@code {
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+
+    public string Name { get; set; }
+
+    public void SubmitForm() {
+        Name = FirstName + " " + LastName;
+    }
+}

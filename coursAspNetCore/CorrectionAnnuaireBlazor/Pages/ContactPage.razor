@@ -2,6 +2,7 @@
 @using CorrectionAnnuaireBlazor.Models
 @using CorrectionAnnuaireBlazor.Services
 @inject ContactService _contactService;
+@inject NavigationManager _navigationMangaer;
 @page "/contact/{Id:int}"
 
 @if(Contact == null) {
@@ -14,7 +15,9 @@
         }
     </div>
 }
-
+<div>
+    <button @onclick="@GoHome">Retour Accueil</button>
+</div>
 @code {
     [Parameter]
     public int Id { get; set; }
@@ -29,5 +32,9 @@
         if(_contactService.DeleteEmail(Id, emailId)){
             StateHasChanged();
         }
+    }
+
+    public void GoHome() {
+        _navigationMangaer.NavigateTo("/");
     }
 }
