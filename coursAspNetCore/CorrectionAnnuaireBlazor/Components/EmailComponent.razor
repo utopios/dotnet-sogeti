@@ -1,0 +1,17 @@
+﻿@using CorrectionAnnuaireBlazor.Models
+<div>
+    Email : @Email.Mail <button @onclick="DeleteMail">Supprimer</button>
+</div>
+
+@code {
+
+    [Parameter]
+    public Email Email { get; set; }
+
+    [Parameter]
+    public EventCallback<int> OnDeletedEmail { get; set; }
+
+    public void DeleteMail() {
+        OnDeletedEmail.InvokeAsync(Email.Id);
+    }
+}

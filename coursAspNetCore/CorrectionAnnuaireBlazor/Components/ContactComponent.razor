@@ -1,0 +1,18 @@
+﻿@using CorrectionAnnuaireBlazor.Models
+<div>
+    Nom : @Contact.LastName Prénom : @Contact.FirstName Téléphone: @Contact.Phone <NavLink href="@Link">Detail</NavLink> <button @onclick="DeleteContact">Supprimer</button>
+</div>
+
+@code {
+    [Parameter]
+    public Contact Contact { get; set; }
+
+    public string Link { get => "/contact/" + Contact.Id; }
+
+    [Parameter]
+    public EventCallback<int> OnDeletedContact { get; set; }
+
+    public void DeleteContact() {
+        OnDeletedContact.InvokeAsync(Contact.Id);
+    }
+}

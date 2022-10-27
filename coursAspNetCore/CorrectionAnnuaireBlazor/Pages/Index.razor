@@ -1,0 +1,29 @@
+﻿@using CorrectionAnnuaireBlazor.Components
+@using CorrectionAnnuaireBlazor.Models
+@using CorrectionAnnuaireBlazor.Services
+@inject ContactService _contactService;
+@page "/"
+<PageTitle>Liste contact</PageTitle>
+
+<h1>Liste des contacts</h1>
+
+@foreach(Contact contact in Contacts) {
+    <ContactComponent Contact="@contact" OnDeletedContact="@DeleteContact"></ContactComponent>
+}
+
+
+
+@code {
+    public List<Contact> Contacts { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Contacts = _contactService.Contacts;
+    }
+
+    public void DeleteContact(int id) {
+        if(_contactService.DeleteContact(id)) {
+            StateHasChanged();
+        }
+    }
+}
