@@ -1,0 +1,29 @@
+﻿@page "/cart/{Id:int}"
+@page "/cart"
+@inject CartService _cartService;
+<h3>Panier</h3>
+@foreach(CartProduct product in Cart.Products) {
+    <CartProductComponent Product="product" OnQtyChanged="UpdateQty"></CartProductComponent>
+}
+
+<div>
+    Total : @Cart.Total €
+</div>
+@code {
+    public Cart Cart { get; set; }
+
+    [Parameter]
+    public int? Id { get; set; }
+    protected override void OnInitialized()
+    {
+        Cart = _cartService.Cart;
+        if(Id != null) {
+            _cartService.AddProductToCart((int)Id);
+        }
+    }
+
+    public void UpdateQty(bool result) {
+        if (result)
+            StateHasChanged();
+    }
+}
