@@ -1,0 +1,39 @@
+﻿@inject ProductService _productService;
+@page "/product/{Id:int}"
+
+@if(Product != null) {
+    <div class="row">
+        <h3 class="col-9">@Product.Name</h3>
+        <span class="col-3"><strong>@Product.Price €</strong></span>
+    </div>
+    <div class="row">
+        <div class="col">
+            @Product.Description
+        </div>
+    </div>
+    <div class="row m-1">
+       
+        <NavLink href="@LinkCart" class="btn col-12 p-1 btn-warning">Ajouter au panier</NavLink>
+    </div>
+}
+else {
+    <div class="alert alert-danger row m-1 p-1">
+        <div class="col">
+            Aucun produit avec cet id
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    public Product? Product { get; set; }
+
+    public string LinkCart { get => "/cart/" + Product?.Id; }
+
+    protected override void OnInitialized()
+    {
+        Product = _productService.GetProductById(Id);
+    }
+}

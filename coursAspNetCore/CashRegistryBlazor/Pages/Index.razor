@@ -1,0 +1,16 @@
+﻿@inject ProductService _productService;
+@page "/"
+
+<PageTitle>Produits</PageTitle>
+@foreach(Product p in Products ) {
+    <ProductComponent Product="@p"></ProductComponent>
+}
+
+@code {
+    public List<Product> Products { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Products = _productService.Products;
+    }
+}

@@ -1,0 +1,18 @@
+﻿<h3>Formulaire Product</h3>
+<EditForm class="container" Model="@Product">
+    <div class="row m-1 justify-content-center">
+        <InputText class="form-control p-1 col-9 " placeholder="Titre du produit" @bind-Value="@Product.Name"></InputText>
+    </div>
+    <div class="row m-1 justify-content-center">
+        <InputNumber class="form-control p-1 col-9 " placeholder="Prix du produit" @bind-Value="@Product.Price"></InputNumber>
+    </div>
+    <div class="row m-1 justify-content-center">
+        <InputNumber class="form-control p-1 col-9 " placeholder="Stock du produit" @bind-Value="@Product.Stock"></InputNumber>
+    </div>
+    <div class="row m-1 justify-content-center">
+        <InputTextArea class="form-control p-1 col-9 " placeholder="description du produit" @bind-Value="@Product.Description"></InputTextArea>
+    </div>
+</EditForm>
+@code {
+    public Product Product { get; set; }
+}
