@@ -1,5 +1,6 @@
 ﻿@inject ProductService _productService;
 @inject NavigationManager navigationManager;
+@page "/form-product/{Id:int}"
 @page "/form-product"
 <h3>Formulaire Produit</h3>
 <EditForm class="container" Model="@Product" OnSubmit="@ValidForm">
@@ -20,15 +21,27 @@
     </div>
 </EditForm>
 @code {
-    public Product Product { get; set; }
+    [Parameter]
+    public int? Id {get;set;}
+    public Product? Product { get; set; }
 
     protected override void OnInitialized()
     {
-        Product = new Product();
+        if(Id == null) {
+            Product = new Product();
+        }else {
+            Product = _productService.GetProductById((int)Id);
+        }
     }
 
     public void ValidForm() {
-        if(_productService.AddProduct(Product)) {
+        if(Id == null) {
+            if (_productService.AddProduct(Product))
+            {
+                navigationManager.NavigateTo("/");
+            }
+        }
+        else {
             navigationManager.NavigateTo("/");
         }
     }
