@@ -1,4 +1,5 @@
 ﻿using courstest;
+using Moq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,8 +15,13 @@ namespace Testcourstest
         [TestMethod]
         public void TestWin()
         {
-            Game game = new Game(new FakeWinDice());
-
+            //Arrange
+            //Créer les fakes dice à l'aide  du moq
+            var fakeDice1 = Mock.Of<IDice>();
+            Mock.Get(fakeDice1).Setup(d => d.ThrowDice()).Returns(3);
+           
+            //Game game = new Game(new FakeWinDice());
+            Game game = new Game(fakeDice1, fakeDice1);
             bool result = game.Play();
 
             Assert.IsTrue(result);
@@ -25,7 +31,13 @@ namespace Testcourstest
         [TestMethod]
         public void TestNotWin()
         {
-            Game game = new Game(new FakeLoseDice());
+            //Arrange
+            //Créer les fakes dice à l'aide  du moq
+            var fakeDice1 = Mock.Of<IDice>();
+            Mock.Get(fakeDice1).Setup(d => d.ThrowDice()).Returns(3);
+            var fakeDice2 = Mock.Of<IDice>();
+            Mock.Get(fakeDice2).Setup(d => d.ThrowDice()).Returns(4);
+            Game game = new Game(fakeDice1, fakeDice2);
 
             bool result = game.Play();
 
