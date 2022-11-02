@@ -11,9 +11,7 @@ namespace TP03.Classes
     {
         private static string[] _motDisponibles = new string[] { "Amazon", "eBay", "Fnac", "CDiscount", "LeBonCoin", "AliExpress", "Micromania", "RueDuCommerce", "Darty", "Alibaba", "Wish", "Leclerc", "Carrefour", "Auchan", "Aldi", "Lidl", "EasyCash" };
 
-        public GenerateurDeMot()
-        {
-        }
+       
 
         public string Generer()
         {
