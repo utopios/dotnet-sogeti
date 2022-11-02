@@ -8,13 +8,13 @@ namespace Bowling.Classes
 {
     public class Roll
     {
-        private int _pings;
+        private int _pins;
 
-        public int Pings { get => _pings; }
+        public int Pins { get => _pins; }
 
-        public Roll(int pings)
+        public Roll(int pins)
         {
-            _pings = pings;
+            _pins = pins;
         }
     }
 }
