@@ -58,9 +58,14 @@ namespace Bowling.Classes
                 Roll r1 = Rolls[0];
                 Roll r2 = Rolls[1];
 
-                if((r1.Pins + r2.Pins) >= 10)
+                if((r1.Pins + r2.Pins) >= 10 && (r1.Pins + r2.Pins) < 20)
                 {
                     MakeRoll(20 - (r1.Pins + r2.Pins));
+                    return true;
+                }
+                else if((r1.Pins + r2.Pins) == 20)
+                {
+                    MakeRoll(10);
                     return true;
                 }
             }
