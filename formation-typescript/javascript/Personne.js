@@ -8,4 +8,9 @@ export class Personne {
     methodAfficher() {
         console.log(this.firstName + " "+this.lastName)
     }
+
+    afficherAvecMessage(message) {
+        console.log(message)
+        this.methodAfficher();
+    }
 }

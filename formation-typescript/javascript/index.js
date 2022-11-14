@@ -1,5 +1,6 @@
 import { Personne } from "./Personne.js"
-
+// import DefaultNameImport from "./default-export-example.js"
+// import * as DefaultNameImport from "./default-export-example.js"
 //Déclaration de variables
 const varConst = "test const variable";
 let total = 0;
@@ -39,6 +40,17 @@ const p2 = new Personne("titi", "minet");
 personnes.push(p1)
 personnes.push(p2)
 
-for(let i=0; i < personnes.length; i++) {
-    personnes[i].methodAfficher();
-}
+// for(let i=0; i < personnes.length; i++) {
+//     personnes[i].methodAfficher();
+// }
+
+// for(let p of personnes) {
+//     p.methodAfficher();
+// }
+
+personnes.forEach(p => {
+    p.methodAfficher();
+    p.afficherAvecMessage(["toto",34, new Date()])
+});
+
+console.log(DefaultNameImport.default)
