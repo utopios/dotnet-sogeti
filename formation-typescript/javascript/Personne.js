@@ -14,3 +14,15 @@ export class Personne {
         this.methodAfficher();
     }
 }
+
+export class Etudiant extends Personne {
+    constructor(firstName, lastName, level) {
+        super(firstName, lastName)
+        this.level = level;
+    }
+
+    methodAfficher() {
+        super.methodAfficher();
+        console.log(this.level);
+    }
+}
