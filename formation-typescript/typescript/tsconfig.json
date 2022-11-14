@@ -1,0 +1,9 @@
+{
+    "include": ["./**/*"],
+    "exclude": ["node_modules"],
+    "compilerOptions": {
+        "outDir": "./js",
+        "target": "ESNext",
+        "module": "CommonJs"
+    }
+}
