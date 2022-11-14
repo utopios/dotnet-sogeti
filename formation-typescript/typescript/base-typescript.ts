@@ -1,7 +1,7 @@
 let firstName: string = "ihab"
 let test: boolean = false
 let age:number = 35
-
+let nom: string = "zere"
 let firstArray: Array<number> = []
 firstArray.push(34)
 
@@ -11,6 +11,24 @@ let firstObjet:object = {
     firstName:"ihab",
     lastName: "abadi",
     age:35
+}
+
+//inférence
+let secondObjet = {
+    firstName:"ihab",
+    lastName: "abadi",
+    age:35
+}
+
+//par attribution
+let number: {
+    firstName: string,
+    lastName: string,
+    age:number
+} = {
+    firstName:"toto",
+    lastName: "tata",
+    age: 34
 }
 
 enum Role {

@@ -1,2 +1,1 @@
-const nom = "Ihab"
-console.log(nom)
+// let nom:string = "test"

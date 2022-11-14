@@ -4,6 +4,7 @@
     "compilerOptions": {
         "outDir": "./js",
         "target": "ESNext",
-        "module": "CommonJs"
+        "module": "CommonJS",
+        "esModuleInterop": true
     }
 }
