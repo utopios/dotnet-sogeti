@@ -1,0 +1,5 @@
+--- Créer un module nodejs
+npm init => à l'interieur du dossier module
+
+--- Pour executer un fichier js avec nodejs
+node <nom_du_fichier>

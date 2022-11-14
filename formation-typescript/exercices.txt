@@ -1,0 +1,21 @@
+Exercice bâtiment - héritage
+
+1. Classe Batiment
+    1.1 Créer une classe Batiment avec l'attribut suivant :
+        - adresse
+    1.2 Créer les getter et les setter pour cette classe
+    1.3 Créer une méthode toString() qui représente le bâtiment
+
+2. Classe Maison
+    2.1 Créer une classe maison qui hérite de Batiment
+    2.2 Ajouter l'attribut suivant :
+        - Pièces
+    2.3 Créer les getter et les setter pour cette classe
+    2.4 Créer une méthode toString() qui donne une représentation de la maison
+
+3. Interface
+    3.1 Créer un IHM qui permet de :
+        - Créer un Batiment
+        - Créer une Maison 
+        - Afficher les bâtiments
+        - Afficher les maisons
