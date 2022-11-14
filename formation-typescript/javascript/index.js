@@ -54,4 +54,6 @@ personnes.forEach(p => {
     // p.afficherAvecMessage(["toto",34, new Date()])
 });
 
+console.log(p1.firstName);
+
 // console.log(DefaultNameImport.default)
