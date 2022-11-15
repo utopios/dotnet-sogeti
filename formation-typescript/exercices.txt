@@ -62,3 +62,12 @@ Créer une classe pile générique qui permet :
 
 Les éléments de la pile seront stockés dans un tableau.
 La pile fonctionnera uniquement avec des éléments qui ont un Id
+
+
+Exercise - Caisse enregistreuse
+
+-	Vous pourrez utiliser une classe Caisse possédant une collection de produits et une collections de ventes
+-	Vous pourrez utiliser une classe Produit comportant un numéro, un nom, un prix et un stock
+-	Vous pourrez utiliser une classe Vente possédant un numéro, une liste de produits et une méthode permettant de
+    valider la vente, ce qui confirmera le paiement et changera le stock des produits
+-	Deux classes de paiements, une classe PaiementCB et une classe PaiementEspece, qui auront une méthode pour payer (pour les espèces, pensez aussi au champ monnaie)
