@@ -26,7 +26,7 @@ export class Cart implements WithId {
         this._payment = payment
         if(this._payment.pay(this.total)) {
             this.products.forEach(p => {
-                p.stock--
+                p.stock -= p.quantity
             })
             return true
         }
