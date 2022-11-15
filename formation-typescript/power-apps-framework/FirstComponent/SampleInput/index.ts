@@ -6,7 +6,10 @@ export class SampleInput implements ComponentFramework.StandardControl<IInputs, 
     private _div: HTMLDivElement
     private _firstInput: HTMLInputElement
     private _container: HTMLDivElement
+    private _label:HTMLLabelElement
     private _context: ComponentFramework.Context<IInputs>
+    private _notifyOutputChanged: () => void
+    private _getDataFromInput:EventListenerOrEventListenerObject
     /**
      * Empty constructor.
      */
@@ -27,8 +30,10 @@ export class SampleInput implements ComponentFramework.StandardControl<IInputs, 
     {
         this._container = container
         this._context = context
+        this._notifyOutputChanged = notifyOutputChanged
         this._valueFirstInput = this._context.parameters.sampleProperty.raw!
-
+        //relier l'event à la méthode
+        this._getDataFromInput = this.getDataFromInput.bind(this)
         this._div = document.createElement("div")
         this._div.innerText = "Hello from our first component"
         this._container.appendChild(this._div)
@@ -37,7 +42,17 @@ export class SampleInput implements ComponentFramework.StandardControl<IInputs, 
         this._firstInput.setAttribute("type", "text")
         this._firstInput.setAttribute("placeholder", "Merci de saisir la valeur de votre premier champ : ")
         this._firstInput.setAttribute("value", this._valueFirstInput)
+        this._firstInput.addEventListener("input", this._getDataFromInput)
         this._container.appendChild(this._firstInput)
+
+        this._label = document.createElement("label")
+        this._container.appendChild(this._label)
+    }
+
+    private getDataFromInput() {
+        this._valueFirstInput = this._firstInput.value
+        this._label.innerText = this._valueFirstInput
+        this._notifyOutputChanged()
     }
 
 
@@ -56,7 +71,9 @@ export class SampleInput implements ComponentFramework.StandardControl<IInputs, 
      */
     public getOutputs(): IOutputs
     {
-        return {};
+        return {
+            sampleProperty: this._valueFirstInput
+        };
     }
 
     /**
