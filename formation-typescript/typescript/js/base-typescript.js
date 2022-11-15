@@ -4,11 +4,7 @@
 // let nom: string = "zere"
 // let firstArray: Array<number> = []
 // firstArray.push(34)
-
-import { Formateur, Personne } from "./classes/Personne";
-
 // let firstTuple : [string, number] = ["one", 24]
-
 // let firstObjet:object = {
 //     firstName:"ihab",
 //     lastName: "abadi",
@@ -22,7 +18,6 @@ import { Formateur, Personne } from "./classes/Personne";
 //     age:35
 // }
 // console.log(secondObjet.age)
-
 // //par attribution
 // let number: {
 //     firstName: string,
@@ -33,38 +28,28 @@ import { Formateur, Personne } from "./classes/Personne";
 //     lastName: "tata",
 //     age: 34
 // }
-
 // enum Role {
 //     Admin,
 //     public,
 //     User,
 // }
 // console.log(Role.User)
-
 // const testAny:any = true
 // let str: unknown
 // str = "hello"
 // str = true
 // console.log(typeof str)
-
 //signature au fonction
-
-function maFonction(arg1:string, arg2:number) : void {
-    console.log(arg1)
-    console.log(arg2)
+function maFonction(arg1, arg2) {
+    console.log(arg1);
+    console.log(arg2);
 }
-
-const addition = (a:number, b:number): number => {
+const addition = (a, b) => {
     return a + b;
-}
+};
 // function calcule(a:number, b:number, methodeCalcule:Function)  {
 //     console.log(methodeCalcule(a,b))
 // }
-
-
-function calcule(a:number, b:number, methodeCalcule:(a:number,b:number) => number)  {
-    console.log(methodeCalcule(a,b))
+function calcule(a, b, methodeCalcule) {
+    console.log(methodeCalcule(a, b));
 }
-
-const p1: Personne = new Formateur("ihab", "abadi", 35, "typescript")
-p1.methodeAfficher()
