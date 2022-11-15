@@ -9,5 +9,8 @@ import { Utilisateur } from "./interfaces/interfaces";
 const u:Utilisateur = {
     id: 1,
     firstName : "toto",
-    lastName: "tata"
+    lastName: "tata",
+    methodeAfficher : () => {
+        
+    }
 }
