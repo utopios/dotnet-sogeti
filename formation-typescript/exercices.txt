@@ -52,3 +52,13 @@ Exercice 2
 
     Afficher la valeur age via console.log
 8. Créer une variable «	infos » qui ne peut être qu’un Tuple de seulement 2 valeurs. string et number dans cet ordre-là!
+
+Exercice Générique
+
+Créer une classe pile générique qui permet :
+    - D'empiler des éléments.
+    - Depiler le dernier élément.
+    - Récupérer un élément par son id
+
+Les éléments de la pile seront stockés dans un tableau.
+La pile fonctionnera uniquement avec des éléments qui ont un Id
