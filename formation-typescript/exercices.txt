@@ -71,3 +71,10 @@ Exercise - Caisse enregistreuse
 -	Vous pourrez utiliser une classe Vente possédant un numéro, une liste de produits et une méthode permettant de
     valider la vente, ce qui confirmera le paiement et changera le stock des produits
 -	Deux classes de paiements, une classe PaiementCB et une classe PaiementEspece, qui auront une méthode pour payer (pour les espèces, pensez aussi au champ monnaie)
+
+
+Exercice 1 - Power apps framework
+
+- Créer un composant qui permet de saisir les informations d'un contact et afficher le contact en dessous du formulaire.
+Un contact a un nom, prénom, email.
+- Modifier le composant pour afficher une liste de contact ajoutée par le formulaire.
