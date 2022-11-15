@@ -20,7 +20,9 @@ export class SampleInput implements ComponentFramework.StandardControl<IInputs, 
      */
     public init(context: ComponentFramework.Context<IInputs>, notifyOutputChanged: () => void, state: ComponentFramework.Dictionary, container:HTMLDivElement): void
     {
-        // Add control initialization code
+        const div = document.createElement("div")
+        div.innerText = "Hello from our first component"
+        container.appendChild(div)
     }
 
 
