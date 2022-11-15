@@ -1,9 +1,12 @@
+"use strict";
 // let firstName: string = "ihab"
 // let test: boolean = false
 // let age:number = 35
 // let nom: string = "zere"
 // let firstArray: Array<number> = []
 // firstArray.push(34)
+Object.defineProperty(exports, "__esModule", { value: true });
+const Personne_1 = require("./classes/Personne");
 // let firstTuple : [string, number] = ["one", 24]
 // let firstObjet:object = {
 //     firstName:"ihab",
@@ -53,3 +56,5 @@ const addition = (a, b) => {
 function calcule(a, b, methodeCalcule) {
     console.log(methodeCalcule(a, b));
 }
+const p1 = new Personne_1.Formateur("ihab", "abadi", 35, "typescript");
+p1.methodeAfficher();

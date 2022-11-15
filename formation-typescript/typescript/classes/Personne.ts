@@ -1,7 +1,10 @@
-export abstract class Personne {
+import { Utilisateur } from "../interfaces/interfaces"
+
+export abstract class Personne implements Utilisateur {
     private _firstName:string
     private _lastName: string
     private _age:number
+    id: number
     
     constructor(firstName:string, lastName:string, age:number) {
         this.firstName = firstName

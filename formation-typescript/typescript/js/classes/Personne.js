@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Personne = void 0;
+exports.Formateur = exports.Personne = void 0;
 class Personne {
     _firstName;
     _lastName;
@@ -29,7 +29,19 @@ class Personne {
         this._age = value;
     }
     methodeAfficher() {
-        console.log();
+        console.log(this.firstName + " " + this.lastName + " " + this.age);
     }
 }
 exports.Personne = Personne;
+class Formateur extends Personne {
+    _formation;
+    constructor(firstName, lastName, age, formation) {
+        super(firstName, lastName, age);
+        this._formation = formation;
+    }
+    methodeAfficher() {
+        super.methodeAfficher();
+        console.log(this._formation);
+    }
+}
+exports.Formateur = Formateur;

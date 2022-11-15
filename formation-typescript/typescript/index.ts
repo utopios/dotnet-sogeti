@@ -1,5 +1,13 @@
 // let nom:string = "test"
 
-import { Pile } from "./classes/Pile";
+import { Utilisateur } from "./interfaces/interfaces";
 
-const pile: Pile<string> = new Pile()
+// import { Pile } from "./classes/Pile";
+
+// const pile: Pile<string> = new Pile()
+
+const u:Utilisateur = {
+    id: 1,
+    firstName : "toto",
+    lastName: "tata"
+}
