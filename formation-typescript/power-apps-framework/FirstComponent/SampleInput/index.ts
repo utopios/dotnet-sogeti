@@ -2,6 +2,11 @@ import {IInputs, IOutputs} from "./generated/ManifestTypes";
 
 export class SampleInput implements ComponentFramework.StandardControl<IInputs, IOutputs> {
 
+    private _valueFirstInput: string
+    private _div: HTMLDivElement
+    private _firstInput: HTMLInputElement
+    private _container: HTMLDivElement
+    private _context: ComponentFramework.Context<IInputs>
     /**
      * Empty constructor.
      */
@@ -20,9 +25,19 @@ export class SampleInput implements ComponentFramework.StandardControl<IInputs, 
      */
     public init(context: ComponentFramework.Context<IInputs>, notifyOutputChanged: () => void, state: ComponentFramework.Dictionary, container:HTMLDivElement): void
     {
-        const div = document.createElement("div")
-        div.innerText = "Hello from our first component"
-        container.appendChild(div)
+        this._container = container
+        this._context = context
+        this._valueFirstInput = this._context.parameters.sampleProperty.raw!
+
+        this._div = document.createElement("div")
+        this._div.innerText = "Hello from our first component"
+        this._container.appendChild(this._div)
+        
+        this._firstInput = document.createElement("input")
+        this._firstInput.setAttribute("type", "text")
+        this._firstInput.setAttribute("placeholder", "Merci de saisir la valeur de votre premier champ : ")
+        this._firstInput.setAttribute("value", this._valueFirstInput)
+        this._container.appendChild(this._firstInput)
     }
 
 
