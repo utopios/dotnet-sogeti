@@ -1,4 +1,5 @@
 import {IInputs, IOutputs} from "./generated/ManifestTypes";
+import { IFieldsInputs } from "./interfaces/fields-inputs";
 
 export class SampleInput implements ComponentFramework.StandardControl<IInputs, IOutputs> {
     
@@ -20,9 +21,14 @@ export class SampleInput implements ComponentFramework.StandardControl<IInputs, 
     private _blockResults: HTMLDivElement
 
     //Fields
-    private _FirstNameInput: HTMLInputElement
-    private _LastNameInput: HTMLInputElement
-    private _EmailInput:HTMLInputElement
+    private _FieldsInputs:IFieldsInputs = {
+        FirstName: undefined,
+        LastName: undefined,
+        Email: undefined
+    }
+    // private _FirstNameInput: HTMLInputElement
+    // private _LastNameInput: HTMLInputElement
+    // private _EmailInput:HTMLInputElement
     private _inputEvent:EventListenerOrEventListenerObject
     //#endregion
     
@@ -70,9 +76,13 @@ export class SampleInput implements ComponentFramework.StandardControl<IInputs, 
         //#endregion
         
         this._inputEvent = this.handleInputChange.bind(this)
-        this._FirstNameInput = this.createInput("firstName", "text", "", "Merci de saisir le prénom",this._inputEvent)
-        this._LastNameInput = this.createInput("lastName", "text", "", "Merci de saisir le nom",this._inputEvent)
-        this._EmailInput = this.createInput("email", "text", "", "Merci de saisir l'email",this._inputEvent)
+        // this._FirstNameInput = this.createInput("firstName", "text", "", "Merci de saisir le prénom",this._inputEvent)
+        // this._LastNameInput = this.createInput("lastName", "text", "", "Merci de saisir le nom",this._inputEvent)
+        // this._EmailInput = this.createInput("email", "text", "", "Merci de saisir l'email",this._inputEvent)
+        let index: keyof typeof this._FieldsInputs
+        for(index in this._FieldsInputs) {
+            this._FieldsInputs[index] = this.createInput("firstName", "text", "", "Merci de saisir le prénom",this._inputEvent)
+        }
         this._blockFields = document.createElement("div")
         this._blockFields.appendChild(this.wrapInDiv(this._FirstNameInput))
         this._blockFields.appendChild(this.wrapInDiv(this._LastNameInput))
