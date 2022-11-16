@@ -120,7 +120,7 @@ export class SampleInput implements ComponentFramework.StandardControl<IInputs, 
         //  this._notifyOutputChanged()
 
          //Version question 2
-        const contact:IContact = {
+         const contact:IContact = {
             FirstName: this._FieldsInputs.FirstName!.value,
             LastName: this._FieldsInputs.LastName!.value,
             Email:this._FieldsInputs.Email!.value
