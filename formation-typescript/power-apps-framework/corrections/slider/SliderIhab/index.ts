@@ -48,6 +48,7 @@ export class SliderIhab implements ComponentFramework.StandardControl<IInputs, I
 
     public updateValue(): void {
         this._value = new Number(this.inputElement.value) as number
+        console.log(this._value)
         this.labelElement.innerText = this.inputElement.value
         this._notifyOutputChanged()
     }
