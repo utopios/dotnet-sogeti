@@ -19,6 +19,7 @@ export class SampleInput implements ComponentFramework.StandardControl<IInputs, 
     private _container: HTMLDivElement
     private _blockFields: HTMLDivElement
     private _blockResults: HTMLDivElement
+    private _notifyOutputChanged:()=> void
 
     //Fields
     private _FieldsInputs:IFieldsInputs = {
@@ -52,7 +53,7 @@ export class SampleInput implements ComponentFramework.StandardControl<IInputs, 
     {
         this._context = context
         this._container = container
-        
+        this._notifyOutputChanged = notifyOutputChanged
         //#region cours
         // this._container = container
         // this._context = context
@@ -77,7 +78,7 @@ export class SampleInput implements ComponentFramework.StandardControl<IInputs, 
         
         this._inputEvent = this.handleInputChange.bind(this)
         this._blockFields = document.createElement("div")
-        
+        this._blockResults = document.createElement("div")
         // this._FirstNameInput = this.createInput("firstName", "text", "", "Merci de saisir le prénom",this._inputEvent)
         // this._LastNameInput = this.createInput("lastName", "text", "", "Merci de saisir le nom",this._inputEvent)
         // this._EmailInput = this.createInput("email", "text", "", "Merci de saisir l'email",this._inputEvent)
@@ -93,10 +94,19 @@ export class SampleInput implements ComponentFramework.StandardControl<IInputs, 
         
 
         this._container.appendChild(this.wrapInDiv(this._blockFields))
+
     }
 
-    private handleInputChange() {
+    private handleInputChange(event:Event):void {
+       let html:string = ""
 
+       let index: keyof typeof this._FieldsInputs
+        for(index in this._FieldsInputs) {
+            html += `<div><strong>${index}</strong>: ${this._FieldsInputs[index]?.value}</div>`
+        }
+        this._blockResults.innerHTML = html
+        this._container.appendChild(this._blockResults)
+        this._notifyOutputChanged()
     }
 
     // private getDataFromInput() {
@@ -138,7 +148,9 @@ export class SampleInput implements ComponentFramework.StandardControl<IInputs, 
     public getOutputs(): IOutputs
     {
         return {
-            // sampleProperty: this._valueFirstInput
+            FirstNameProperty: this._FieldsInputs.FirstName?.value,
+            LastNameProperty: this._FieldsInputs.LastName?.value,
+            EmailProperty: this._FieldsInputs.Email?.value
         };
     }
 
