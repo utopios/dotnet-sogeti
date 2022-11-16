@@ -80,4 +80,4 @@ Un contact a un nom, prénom, email.
 - Modifier le composant pour afficher une liste de contact ajoutée par le formulaire.
 
 # Exercice 2 - 
-Creer un composant slider avec des paramètre min et max et qui permet de récuper les valeurs du champ.
+Creer un composant slider avec des paramètre min et max et qui permet de récuper les valeurs du champ. (aide type range)

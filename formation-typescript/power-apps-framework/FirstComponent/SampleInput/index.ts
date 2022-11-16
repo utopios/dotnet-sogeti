@@ -1,4 +1,5 @@
 import {IInputs, IOutputs} from "./generated/ManifestTypes";
+import { IContact } from "./interfaces/contact";
 import { IFieldsInputs } from "./interfaces/fields-inputs";
 
 export class SampleInput implements ComponentFramework.StandardControl<IInputs, IOutputs> {
@@ -20,6 +21,8 @@ export class SampleInput implements ComponentFramework.StandardControl<IInputs, 
     private _blockFields: HTMLDivElement
     private _blockResults: HTMLDivElement
     private _notifyOutputChanged:()=> void
+
+    private _contacts:IContact[] = []
 
     //Fields
     private _FieldsInputs:IFieldsInputs = {
@@ -105,15 +108,32 @@ export class SampleInput implements ComponentFramework.StandardControl<IInputs, 
     }
 
     public clickButton():void {
-        let html:string = ""
+        //Version question 1
+        // let html:string = ""
 
+        // let index: keyof typeof this._FieldsInputs
+        //  for(index in this._FieldsInputs) {
+        //      html += `<div><strong>${index}</strong>: ${this._FieldsInputs[index]?.value}</div>`
+        //  }
+        //  this._blockResults.innerHTML = html
+        //  this._container.appendChild(this._blockResults)
+        //  this._notifyOutputChanged()
+
+         //Version question 2
+        const contact:IContact = {
+            FirstName: this._FieldsInputs.FirstName!.value,
+            LastName: this._FieldsInputs.LastName!.value,
+            Email:this._FieldsInputs.Email!.value
+        }
+        this._contacts.push(contact)
+        const blockContact = document.createElement("div")
+        blockContact.innerHTML = `Nom : <strong>${contact.LastName}</strong>, Prénom: <strong>${contact.FirstName}</strong>, Email: <strong>${contact.Email}</strong>`
+        this._container.appendChild(blockContact)
         let index: keyof typeof this._FieldsInputs
          for(index in this._FieldsInputs) {
-             html += `<div><strong>${index}</strong>: ${this._FieldsInputs[index]?.value}</div>`
+             this._FieldsInputs[index]!.value = ""
          }
-         this._blockResults.innerHTML = html
-         this._container.appendChild(this._blockResults)
-         this._notifyOutputChanged()
+        this._notifyOutputChanged()
     }
 
     private handleInputChange(event:Event):void {
