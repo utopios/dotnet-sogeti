@@ -1,4 +1,4 @@
-Exercice bâtiment - héritage
+# Exercice bâtiment - héritage
 
 1. Classe Batiment
     1.1 Créer une classe Batiment avec l'attribut suivant :
@@ -20,7 +20,7 @@ Exercice bâtiment - héritage
         - Afficher les bâtiments
         - Afficher les maisons
 
-Exercice 2
+# Exercice 2
 
 1. créer une variable « nom » qui n’accepte qu’un type string
 2. créer une variable « speed » qui n’accepte que les  numbers et l’initialiser avec la valeur 25
@@ -53,7 +53,7 @@ Exercice 2
     Afficher la valeur age via console.log
 8. Créer une variable «	infos » qui ne peut être qu’un Tuple de seulement 2 valeurs. string et number dans cet ordre-là!
 
-Exercice Générique
+# Exercice Générique
 
 Créer une classe pile générique qui permet :
     - D'empiler des éléments.
@@ -64,7 +64,7 @@ Les éléments de la pile seront stockés dans un tableau.
 La pile fonctionnera uniquement avec des éléments qui ont un Id
 
 
-Exercise - Caisse enregistreuse
+# Exercise - Caisse enregistreuse
 
 -	Vous pourrez utiliser une classe Caisse possédant une collection de produits et une collections de ventes
 -	Vous pourrez utiliser une classe Produit comportant un numéro, un nom, un prix et un stock
@@ -73,7 +73,7 @@ Exercise - Caisse enregistreuse
 -	Deux classes de paiements, une classe PaiementCB et une classe PaiementEspece, qui auront une méthode pour payer (pour les espèces, pensez aussi au champ monnaie)
 
 
-Exercice 1 - Power apps framework
+# Exercice 1 - Power apps framework
 
 - Créer un composant qui permet de saisir les informations d'un contact et afficher le contact en dessous du formulaire.
 Un contact a un nom, prénom, email.

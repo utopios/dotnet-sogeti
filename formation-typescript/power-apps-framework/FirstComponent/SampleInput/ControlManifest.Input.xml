@@ -18,8 +18,13 @@
       -->
     </external-service-usage>
     <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
-    <property name="sampleProperty" display-name-key="Property_Display_Key" description-key="Property_Desc_Key" of-type="SingleLine.Text" usage="bound" required="true" />
-    <property name="SecondProperty" display-name-key="Second_Property_Display_Key" description-key="Second_Property_Desc_Key" of-type="SingleLine.Text" usage="bound" required="true" />
+    <!-- <property name="sampleProperty" display-name-key="Property_Display_Key" description-key="Property_Desc_Key" of-type="SingleLine.Text" usage="bound" required="true" />
+    <property name="SecondProperty" display-name-key="Second_Property_Display_Key" description-key="Second_Property_Desc_Key" of-type="SingleLine.Text" usage="bound" required="true" /> -->
+
+    <property name="FirstNameProperty" display-name-key="FirstName" description-key="First name" of-type="SingleLine.Text" usage="bound" required="true" />
+    <property name="LastNameProperty" display-name-key="LastName" description-key="Last name" of-type="SingleLine.Text" usage="bound" required="true" />
+    <property name="EmailProperty" display-name-key="Email" description-key="Email" of-type="SingleLine.Text" usage="bound" required="true" />
+
     <!--
       Property node's of-type attribute can be of-type-group attribute.
       Example:

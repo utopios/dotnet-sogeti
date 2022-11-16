@@ -1,15 +1,31 @@
 import {IInputs, IOutputs} from "./generated/ManifestTypes";
 
 export class SampleInput implements ComponentFramework.StandardControl<IInputs, IOutputs> {
-
-    private _valueFirstInput: string
-    private _div: HTMLDivElement
-    private _firstInput: HTMLInputElement
+    
+    //#region cours
+    // private _valueFirstInput: string
+    // private _div: HTMLDivElement
+    // private _firstInput: HTMLInputElement
+    // private _container: HTMLDivElement
+    // private _label:HTMLLabelElement
+    // private _context: ComponentFramework.Context<IInputs>
+    // private _notifyOutputChanged: () => void
+    // private _getDataFromInput:EventListenerOrEventListenerObject
+    //#endregion
+    
+    //#region ex1
+    private _context:ComponentFramework.Context<IInputs>
     private _container: HTMLDivElement
-    private _label:HTMLLabelElement
-    private _context: ComponentFramework.Context<IInputs>
-    private _notifyOutputChanged: () => void
-    private _getDataFromInput:EventListenerOrEventListenerObject
+    private _blockFields: HTMLDivElement
+    private _blockResults: HTMLDivElement
+
+    //Fields
+    private _FirstNameInput: HTMLInputElement
+    private _LastNameInput: HTMLInputElement
+    private _EmailInput:HTMLInputElement
+    private _inputEvent:EventListenerOrEventListenerObject
+    //#endregion
+    
     /**
      * Empty constructor.
      */
@@ -28,33 +44,67 @@ export class SampleInput implements ComponentFramework.StandardControl<IInputs, 
      */
     public init(context: ComponentFramework.Context<IInputs>, notifyOutputChanged: () => void, state: ComponentFramework.Dictionary, container:HTMLDivElement): void
     {
-        this._container = container
         this._context = context
-        this._notifyOutputChanged = notifyOutputChanged
-        this._valueFirstInput = this._context.parameters.sampleProperty.raw!
-        //relier l'event à la méthode
-        this._getDataFromInput = this.getDataFromInput.bind(this)
-        this._div = document.createElement("div")
-        this._div.innerText = "Hello from our first component"
-        this._container.appendChild(this._div)
+        this._container = container
         
-        this._firstInput = document.createElement("input")
-        this._firstInput.setAttribute("type", "text")
-        this._firstInput.setAttribute("placeholder", "Merci de saisir la valeur de votre premier champ : ")
-        this._firstInput.setAttribute("value", this._valueFirstInput)
-        this._firstInput.addEventListener("input", this._getDataFromInput)
-        this._container.appendChild(this._firstInput)
+        //#region cours
+        // this._container = container
+        // this._context = context
+        // this._notifyOutputChanged = notifyOutputChanged
+        // this._valueFirstInput = this._context.parameters.sampleProperty.raw!
+        // //relier l'event à la méthode
+        // this._getDataFromInput = this.getDataFromInput.bind(this)
+        // this._div = document.createElement("div")
+        // this._div.innerText = "Hello from our first component"
+        // this._container.appendChild(this._div)
+        
+        // this._firstInput = document.createElement("input")
+        // this._firstInput.setAttribute("type", "text")
+        // this._firstInput.setAttribute("placeholder", "Merci de saisir la valeur de votre premier champ : ")
+        // this._firstInput.setAttribute("value", this._valueFirstInput)
+        // this._firstInput.addEventListener("input", this._getDataFromInput)
+        // this._container.appendChild(this._firstInput)
 
-        this._label = document.createElement("label")
-        this._container.appendChild(this._label)
+        // this._label = document.createElement("label")
+        // this._container.appendChild(this._label)
+        //#endregion
+        
+        this._inputEvent = this.handleInputChange.bind(this)
+        this._FirstNameInput = this.createInput("firstName", "text", "", "Merci de saisir le prénom",this._inputEvent)
+        this._LastNameInput = this.createInput("lastName", "text", "", "Merci de saisir le nom",this._inputEvent)
+        this._EmailInput = this.createInput("email", "text", "", "Merci de saisir l'email",this._inputEvent)
+        this._blockFields = document.createElement("div")
+        this._blockFields.appendChild(this.wrapInDiv(this._FirstNameInput))
+        this._blockFields.appendChild(this.wrapInDiv(this._LastNameInput))
+        this._blockFields.appendChild(this.wrapInDiv(this._EmailInput))
+        this._container.appendChild(this.wrapInDiv(this._blockFields))
     }
 
-    private getDataFromInput() {
-        this._valueFirstInput = this._firstInput.value
-        this._label.innerText = this._valueFirstInput
-        this._notifyOutputChanged()
+    private handleInputChange() {
+
     }
 
+    // private getDataFromInput() {
+    //     // this._valueFirstInput = this._firstInput.value
+    //     // this._label.innerText = this._valueFirstInput
+    //     // this._notifyOutputChanged()
+    // }
+
+    private createInput(name:string, type:string, val:string, placeholder:string, event:EventListenerOrEventListenerObject):HTMLInputElement {
+        const input = document.createElement("input")
+        input.setAttribute("type", type)
+        input.setAttribute("name", name)
+        input.setAttribute("value", val)
+        input.setAttribute("placeholder", placeholder)
+        input.addEventListener("input", event)
+        return input
+    }
+    
+    private wrapInDiv(element:HTMLElement):HTMLDivElement {
+        const div = document.createElement("div")
+        div.appendChild(element)
+        return div
+    }
 
     /**
      * Called when any value in the property bag has changed. This includes field values, data-sets, global values such as container height and width, offline status, control metadata values such as label, visible, etc.
@@ -72,7 +122,7 @@ export class SampleInput implements ComponentFramework.StandardControl<IInputs, 
     public getOutputs(): IOutputs
     {
         return {
-            sampleProperty: this._valueFirstInput
+            // sampleProperty: this._valueFirstInput
         };
     }
 
