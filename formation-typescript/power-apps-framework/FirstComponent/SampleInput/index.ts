@@ -76,17 +76,22 @@ export class SampleInput implements ComponentFramework.StandardControl<IInputs, 
         //#endregion
         
         this._inputEvent = this.handleInputChange.bind(this)
+        this._blockFields = document.createElement("div")
+        
         // this._FirstNameInput = this.createInput("firstName", "text", "", "Merci de saisir le prénom",this._inputEvent)
         // this._LastNameInput = this.createInput("lastName", "text", "", "Merci de saisir le nom",this._inputEvent)
         // this._EmailInput = this.createInput("email", "text", "", "Merci de saisir l'email",this._inputEvent)
+        // this._blockFields.appendChild(this.wrapInDiv(this._FirstNameInput))
+        // this._blockFields.appendChild(this.wrapInDiv(this._LastNameInput))
+        // this._blockFields.appendChild(this.wrapInDiv(this._EmailInput))
+        
         let index: keyof typeof this._FieldsInputs
         for(index in this._FieldsInputs) {
-            this._FieldsInputs[index] = this.createInput("firstName", "text", "", "Merci de saisir le prénom",this._inputEvent)
+            this._FieldsInputs[index] = this.createInput(index, "text", "", "Merci de saisir le "+index,this._inputEvent)
+            this._blockFields.appendChild(this.wrapInDiv(this._FieldsInputs[index]))
         }
-        this._blockFields = document.createElement("div")
-        this._blockFields.appendChild(this.wrapInDiv(this._FirstNameInput))
-        this._blockFields.appendChild(this.wrapInDiv(this._LastNameInput))
-        this._blockFields.appendChild(this.wrapInDiv(this._EmailInput))
+        
+
         this._container.appendChild(this.wrapInDiv(this._blockFields))
     }
 
@@ -110,9 +115,10 @@ export class SampleInput implements ComponentFramework.StandardControl<IInputs, 
         return input
     }
     
-    private wrapInDiv(element:HTMLElement):HTMLDivElement {
+    private wrapInDiv(element:HTMLElement|undefined):HTMLDivElement {
         const div = document.createElement("div")
-        div.appendChild(element)
+        if(element instanceof HTMLElement)
+            div.appendChild(element)
         return div
     }
 
