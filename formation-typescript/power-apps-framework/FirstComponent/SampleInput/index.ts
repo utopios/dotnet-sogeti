@@ -31,6 +31,7 @@ export class SampleInput implements ComponentFramework.StandardControl<IInputs, 
     // private _LastNameInput: HTMLInputElement
     // private _EmailInput:HTMLInputElement
     private _inputEvent:EventListenerOrEventListenerObject
+    private _buttonEvent: EventListenerOrEventListenerObject
     //#endregion
     
     /**
@@ -95,18 +96,36 @@ export class SampleInput implements ComponentFramework.StandardControl<IInputs, 
 
         this._container.appendChild(this.wrapInDiv(this._blockFields))
 
+        const button = document.createElement("button")
+        this._buttonEvent = this.clickButton.bind(this)
+        button.addEventListener("click",this._buttonEvent)
+        button.innerText = "Valider"
+        this._container.appendChild(button)
+
+    }
+
+    public clickButton():void {
+        let html:string = ""
+
+        let index: keyof typeof this._FieldsInputs
+         for(index in this._FieldsInputs) {
+             html += `<div><strong>${index}</strong>: ${this._FieldsInputs[index]?.value}</div>`
+         }
+         this._blockResults.innerHTML = html
+         this._container.appendChild(this._blockResults)
+         this._notifyOutputChanged()
     }
 
     private handleInputChange(event:Event):void {
-       let html:string = ""
+    //    let html:string = ""
 
-       let index: keyof typeof this._FieldsInputs
-        for(index in this._FieldsInputs) {
-            html += `<div><strong>${index}</strong>: ${this._FieldsInputs[index]?.value}</div>`
-        }
-        this._blockResults.innerHTML = html
-        this._container.appendChild(this._blockResults)
-        this._notifyOutputChanged()
+    //    let index: keyof typeof this._FieldsInputs
+    //     for(index in this._FieldsInputs) {
+    //         html += `<div><strong>${index}</strong>: ${this._FieldsInputs[index]?.value}</div>`
+    //     }
+    //     this._blockResults.innerHTML = html
+    //     this._container.appendChild(this._blockResults)
+    //     this._notifyOutputChanged()
     }
 
     // private getDataFromInput() {

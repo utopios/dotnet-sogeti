@@ -78,3 +78,6 @@ La pile fonctionnera uniquement avec des éléments qui ont un Id
 - Créer un composant qui permet de saisir les informations d'un contact et afficher le contact en dessous du formulaire.
 Un contact a un nom, prénom, email.
 - Modifier le composant pour afficher une liste de contact ajoutée par le formulaire.
+
+# Exercice 2 - 
+Creer un composant slider avec des paramètre min et max et qui permet de récuper les valeurs du champ.
