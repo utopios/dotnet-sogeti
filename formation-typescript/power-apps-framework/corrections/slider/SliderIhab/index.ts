@@ -35,6 +35,7 @@ export class SliderIhab implements ComponentFramework.StandardControl<IInputs, I
         this._eventUpdate = this.updateValue.bind(this)
         this.inputElement = document.createElement("input")
         this.inputElement.setAttribute("type", "range")
+        this.inputElement.classList.add("maClasse")
         this.inputElement.setAttribute("min", this._context.parameters.MinProperty.formatted ? this._context.parameters.MinProperty.formatted : "0")
         this.inputElement.setAttribute("max", this._context.parameters.MaxProperty.formatted ? this._context.parameters.MaxProperty.formatted : "1000")
         this.inputElement.setAttribute("value", this._context.parameters.ValueProperty.formatted ? this._context.parameters.ValueProperty.formatted : "0")
