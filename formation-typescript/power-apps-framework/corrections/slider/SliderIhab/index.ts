@@ -45,6 +45,29 @@ export class SliderIhab implements ComponentFramework.StandardControl<IInputs, I
         this._container.appendChild(this.inputElement)
         this._container.appendChild(this.labelElement)
         container.appendChild(this._container)
+
+        //Context permet d'accéder au client
+        console.log(this._context.client.getClient())
+
+        //Context permet d'accéder au device
+        // this._context.device.captureImage().then(res => {
+        //     console.log(res)
+        // })
+
+        //Context permet d'accéder à la localisation
+        // this._context.device.getCurrentPosition().then(res => {
+        //     console.log(res)
+        // })
+        //Context permet naivgation
+        // this._context.navigation
+
+        //Pour interagir avec les tables dataverse, on peut utiliser l'objet webApi du context
+        this._context.webAPI.createRecord("nom_table", {}).then(res => {
+            console.log(res.id)
+        })
+
+        
+
     }
 
     public updateValue(): void {
