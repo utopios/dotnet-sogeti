@@ -1,0 +1,12 @@
+.M2iComponentsIhab\.SliderIhab div {
+    background-color: #cd2127;
+    font-size: 20px;
+}
+
+.M2iComponentsIhab\.SliderIhab input[type=range] {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid purple;
+    border-radius: 5px;
+    height: 20px;
+}
