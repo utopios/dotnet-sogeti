@@ -45,6 +45,7 @@
   
   <ItemGroup>
     <ProjectReference Include="../corrections/slider/slider.pcfproj" />
+    <ProjectReference Include="../corrections/morpion/morpion.pcfproj" />
   </ItemGroup>
 
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />

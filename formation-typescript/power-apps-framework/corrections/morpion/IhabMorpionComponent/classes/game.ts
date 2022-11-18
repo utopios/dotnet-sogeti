@@ -76,7 +76,7 @@ export class Game {
                     }               
                 }
 
-                this._context.webAPI.createRecord("ihab_table_winner", {player1: this.firstPlayer.name, player2: this.secondPlayer.name, winner: response[1]}).then(() => {                    
+                this._context.webAPI.createRecord("crd4d_ihab_table_winner", {"crd4d_player1": this.firstPlayer.name, "crd4d_player2": this.secondPlayer.name, "crd4d_winner": response[1]}).then(() => {                    
                     this._winner = response[1]
                     
                 })
