@@ -82,3 +82,9 @@ Un contact a un nom, prénom, email.
 # Exercice 2 - 
 - Creer un composant slider avec des paramètre min et max et qui permet de récuper les valeurs du champ. (aide type range)
 - En utilisant notre slider créer une application canevas qui permet d'ajouter un produit avec (Titre, Pix, stock: slider)
+
+# Exercice Bonus pour le weekend
+On souhaite ajouter à notre application de gestion de centre formation un composant qui permet d'afficher sur 
+une carte maps l'adresse du centre.
+Le composant s'affichera dans la page ou l'écran detail du centre.
+Aide : Utiliser la librairies google maps de typescript : https://developers.google.com/maps/documentation/javascript/using-typescript
