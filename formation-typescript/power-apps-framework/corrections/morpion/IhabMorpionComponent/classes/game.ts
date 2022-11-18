@@ -1,3 +1,4 @@
+import { IInputs } from "../generated/ManifestTypes"
 import { Player } from "../interfaces/player"
 /* eslint-disable */
 export class Game {
@@ -7,8 +8,13 @@ export class Game {
     public secondPlayer: Player
     private eventClickListener: EventListenerOrEventListenerObject
     private isFirstPlayer: boolean
+    private _winner: string|undefined
+    private _context:ComponentFramework.Context<IInputs>
+    private _container:HTMLDivElement
 
-    constructor(firstPlayerName: string | null, secondPlayerName: string | null) {
+    constructor(firstPlayerName: string | null, secondPlayerName: string | null,  context:ComponentFramework.Context<IInputs>, container:HTMLDivElement) {
+        this._context = context
+        this._container = container
         if (firstPlayerName! && secondPlayerName!) {
             this.firstPlayer = {
                 name: firstPlayerName,
@@ -29,6 +35,10 @@ export class Game {
 
     get buttons() {
         return this._buttons
+    }
+
+    get winner() {
+        return this._winner
     }
 
     private createGrid(): void {
@@ -59,6 +69,13 @@ export class Game {
             const response = this.testWin()
             if (response[0]) {
                 console.log("joueur : " + response[1] + " a gagné")
+                this._context.webAPI.createRecord("ihab_table_winner", {player1: this.firstPlayer.name, player2: this.secondPlayer.name, winner: response[1]}).then(() => {                    
+                    this._winner = response[1]
+                    
+                })
+                const div = document.createElement("div")
+                div.innerText = response[1]!
+                this._container.appendChild(div)
             }
         }
     }

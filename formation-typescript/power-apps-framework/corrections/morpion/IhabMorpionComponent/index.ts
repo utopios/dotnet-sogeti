@@ -21,7 +21,7 @@ export class IhabMorpionComponent implements ComponentFramework.StandardControl<
         this._context = context
         this._container = container
         //Création du game
-        this.game = new Game(this._context.client.getClient(), this._context.parameters.ChallengerPlayerProperty.raw)
+        this.game = new Game(this._context.client.getClient(), this._context.parameters.ChallengerPlayerProperty.raw, context, container)
         this.createGrid()
         this.displayPlayers()
     }
@@ -59,7 +59,7 @@ export class IhabMorpionComponent implements ComponentFramework.StandardControl<
     public updateView(context: ComponentFramework.Context<IInputs>): void
     {
         this._container.innerHTML = ""
-        this.game = new Game(this._context.client.getClient(), this._context.parameters.ChallengerPlayerProperty.raw)
+        this.game = new Game(this._context.client.getClient(), this._context.parameters.ChallengerPlayerProperty.raw, this._context, this._container)
         this.createGrid()
         this.displayPlayers()
     }
