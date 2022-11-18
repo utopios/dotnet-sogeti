@@ -72,8 +72,7 @@ export class Game {
                 //disable button
                 for (let i = 0; i < this.buttons.length; i++) {
                     for (let j = 0; j < this.buttons[i].length; j++) {
-                        if(i == j)
-                        this.buttons[i][j].setAttribute("disabled", true)
+                        this.buttons[i][j].disabled = true
                     }               
                 }
 
