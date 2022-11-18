@@ -1,29 +1,29 @@
 import { Player } from "../interfaces/player"
- /* eslint-disable */
+/* eslint-disable */
 export class Game {
     //A typer
-    private _buttons:any= []
+    private _buttons: any = []
     public firstPlayer: Player
-    public secondPlayer:Player
+    public secondPlayer: Player
     private eventClickListener: EventListenerOrEventListenerObject
-    private isFirstPlayer:boolean
-    
-    constructor(firstPlayerName:string|null, secondPlayerName:string|null) {
-        if(firstPlayerName! && secondPlayerName!) {
+    private isFirstPlayer: boolean
+
+    constructor(firstPlayerName: string | null, secondPlayerName: string | null) {
+        if (firstPlayerName! && secondPlayerName!) {
             this.firstPlayer = {
                 name: firstPlayerName,
-                mark:"X",
-                avatar:undefined
+                mark: "X",
+                avatar: undefined
             }
 
             this.secondPlayer = {
                 name: secondPlayerName,
-                mark:"O",
-                avatar:undefined
+                mark: "O",
+                avatar: undefined
             }
             this.isFirstPlayer = true
             this.eventClickListener = this.handleClick.bind(this)
-            this.createGrid()  
+            this.createGrid()
         }
     }
 
@@ -32,9 +32,9 @@ export class Game {
     }
 
     private createGrid(): void {
-        for(let i=1; i <= 3; i++) {
+        for (let i = 1; i <= 3; i++) {
             let line = []
-            for(let j=1; j <= 3; j++) {
+            for (let j = 1; j <= 3; j++) {
                 const button = document.createElement("button")
                 button.classList.add("morpion_button")
                 button.addEventListener('click', this.eventClickListener)
@@ -44,10 +44,10 @@ export class Game {
         }
     }
 
-    private handleClick(element:Event):void {
+    private handleClick(element: Event): void {
         const button = element.target as HTMLButtonElement
-        if(button.innerText == "") {
-            if(this.isFirstPlayer) {
+        if (button.innerText == "") {
+            if (this.isFirstPlayer) {
                 button.innerText = this.firstPlayer.mark
                 button.classList.add("first_player")
             }
@@ -56,6 +56,85 @@ export class Game {
                 button.classList.add("second_player")
             }
             this.isFirstPlayer = !this.isFirstPlayer
+            const response = this.testWin()
+            if (response[0]) {
+                console.log("joueur : " + response[1] + " a gagné")
+            }
         }
+    }
+
+    private testSameValue(tabs: HTMLButtonElement[], value: string): boolean {
+        let test: boolean = true
+        for (let v of tabs) {
+            if (v.innerText != value) {
+                test = false
+                break
+            }
+        }
+        return test
+    }
+    private testWin(): [boolean, string | undefined] {
+        //Pour chaque lignes et pour chaque cols, on test avec la méthode testSameValue avec chaque joueur
+        let response: [boolean, string | undefined] = [false, undefined]
+        //ligne
+        for (let i = 0; i < this.buttons.length; i++) {
+            const tabs = [...this.buttons[i]]
+            if (this.testSameValue(tabs, this.firstPlayer.mark)) {
+                response = [true, this.firstPlayer.name]
+            }
+            else if (this.testSameValue(tabs, this.secondPlayer.mark)) {
+                response = [true, this.secondPlayer.name]
+            }
+        }
+        if (!response[0]) {
+            //cols
+            for (let i = 0; i < this.buttons.length; i++) {
+                const tabs: HTMLButtonElement[] = []
+                for (let j = 0; j < this.buttons[i].length; j++) {
+                    tabs.push(this.buttons[j][i])
+                }
+                if (this.testSameValue(tabs, this.firstPlayer.mark)) {
+                    response = [true, this.firstPlayer.name]
+                }
+                else if (this.testSameValue(tabs, this.secondPlayer.mark)) {
+                    response = [true, this.secondPlayer.name]
+                }
+            }
+        }
+        if (!response[0]) {
+            //diag1
+            const tabs: HTMLButtonElement[] = []
+            for (let i = 0; i < this.buttons.length; i++) {
+                for (let j = 0; j < this.buttons[i].length; j++) {
+                    if(i == j)
+                    tabs.push(this.buttons[j][i])
+                }               
+            }
+            if (this.testSameValue(tabs, this.firstPlayer.mark)) {
+                response = [true, this.firstPlayer.name]
+            }
+            else if (this.testSameValue(tabs, this.secondPlayer.mark)) {
+                response = [true, this.secondPlayer.name]
+            }
+        }
+
+        if (!response[0]) {
+            //diag2
+            const tabs: HTMLButtonElement[] = []
+            for (let i = 0; i < this.buttons.length; i++) {
+                for (let j = 0; j < this.buttons[i].length; j++) {
+                    if( i+j+2 == 4)
+                        tabs.push(this.buttons[j][i])
+                }               
+            }
+            if (this.testSameValue(tabs, this.firstPlayer.mark)) {
+                response = [true, this.firstPlayer.name]
+            }
+            else if (this.testSameValue(tabs, this.secondPlayer.mark)) {
+                response = [true, this.secondPlayer.name]
+            }
+        }
+
+        return response
     }
 }
