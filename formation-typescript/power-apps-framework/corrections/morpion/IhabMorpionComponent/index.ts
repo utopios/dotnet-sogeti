@@ -1,11 +1,12 @@
 import { Game } from "./classes/game";
 import {IInputs, IOutputs} from "./generated/ManifestTypes";
-
+ /* eslint-disable */
 export class IhabMorpionComponent implements ComponentFramework.StandardControl<IInputs, IOutputs> {
 
     private game:Game
     private _context:ComponentFramework.Context<IInputs>
     private _container:HTMLDivElement
+    private _takePicutreEvent:EventListenerOrEventListenerObject
     /**
      * Empty constructor.
      */
@@ -15,7 +16,7 @@ export class IhabMorpionComponent implements ComponentFramework.StandardControl<
     }
 
     
-    /* eslint-disable */
+   
     public init(context: ComponentFramework.Context<IInputs>, notifyOutputChanged: () => void, state: ComponentFramework.Dictionary, container:HTMLDivElement): void
     {
         this._context = context
@@ -46,15 +47,39 @@ export class IhabMorpionComponent implements ComponentFramework.StandardControl<
     }
 
     private displayPlayers():void {
+        this._takePicutreEvent = this.takePicture.bind(this)
+        
         const blockFirstPlayer = document.createElement("div")
         blockFirstPlayer.innerText = this.game.firstPlayer.name
+        const button1 = document.createElement("button")
+        button1.innerText = "ajouter photo"
+        button1.setAttribute("id", "FirstPlayer")
+        button1.addEventListener("click", this._takePicutreEvent)
+        blockFirstPlayer.appendChild(button1)
         this._container.appendChild(blockFirstPlayer)
         const blockSecondPlayer = document.createElement("div")
         blockSecondPlayer.innerText = this.game.secondPlayer.name
+        const button2= document.createElement("button")
+        button2.innerText = "ajouter photo"
+        button2.setAttribute("id", "SecondPlayer")
+        button2.addEventListener("click", this._takePicutreEvent)
+        blockSecondPlayer.appendChild(button2)
         this._container.appendChild(blockSecondPlayer)
 
     }
 
+    private takePicture(event:Event):void {
+        const button = event.target as HTMLButtonElement
+        const player = button.getAttribute("id")
+        this._context.device.captureImage().then(res => {
+            if(player == "FirstPlayer") {
+                this.game.firstPlayer.avatar = res.fileContent
+            }
+            else if(player == "SecondPlayer") {
+                this.game.secondPlayer.avatar = res.fileContent
+            }
+        })
+    }
 
     /**
      * Called when any value in the property bag has changed. This includes field values, data-sets, global values such as container height and width, offline status, control metadata values such as label, visible, etc.
