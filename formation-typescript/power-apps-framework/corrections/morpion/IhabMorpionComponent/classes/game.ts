@@ -12,7 +12,7 @@ export class Game {
     private _context:ComponentFramework.Context<IInputs>
     private _container:HTMLDivElement
 
-    constructor(firstPlayerName: string | null, secondPlayerName: string | null,  context:ComponentFramework.Context<IInputs>, container:HTMLDivElement) {
+    constructor(firstPlayerName: string | undefined, secondPlayerName: string | null,  context:ComponentFramework.Context<IInputs>, container:HTMLDivElement) {
         this._context = context
         this._container = container
         if (firstPlayerName! && secondPlayerName!) {
