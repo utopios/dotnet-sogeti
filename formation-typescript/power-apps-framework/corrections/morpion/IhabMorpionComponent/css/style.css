@@ -1,0 +1,20 @@
+.M2iComponents\.IhabMorpionComponent div {
+    width: 100%;
+    height: 120px;
+}
+
+.morpion_button {
+    width: 23%;
+    height: 90%;
+    margin: 1px;
+    border-radius: 5px;
+    background-color: #af725a;
+    color: white;
+    font-size: 30px;
+}
+.M2iComponents\.IhabMorpionComponent div .first_player {
+    background-color: #0085cf;
+}
+.M2iComponents\.IhabMorpionComponent div .second_player {
+    background-color: #8cc43d;
+}

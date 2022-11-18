@@ -137,6 +137,7 @@ export class SampleInput implements ComponentFramework.StandardControl<IInputs, 
     }
 
     private handleInputChange(event:Event):void {
+        
     //    let html:string = ""
 
     //    let index: keyof typeof this._FieldsInputs
