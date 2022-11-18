@@ -68,7 +68,15 @@ export class Game {
             this.isFirstPlayer = !this.isFirstPlayer
             const response = this.testWin()
             if (response[0]) {
-                console.log("joueur : " + response[1] + " a gagné")
+                
+                //disable button
+                for (let i = 0; i < this.buttons.length; i++) {
+                    for (let j = 0; j < this.buttons[i].length; j++) {
+                        if(i == j)
+                        this.buttons[i][j].setAttribute("disabled", true)
+                    }               
+                }
+
                 this._context.webAPI.createRecord("ihab_table_winner", {player1: this.firstPlayer.name, player2: this.secondPlayer.name, winner: response[1]}).then(() => {                    
                     this._winner = response[1]
                     
