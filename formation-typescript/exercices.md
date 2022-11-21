@@ -88,3 +88,10 @@ On souhaite ajouter à notre application de gestion de centre formation un compo
 une carte maps l'adresse du centre.
 Le composant s'affichera dans la page ou l'écran detail du centre.
 Aide : Utiliser la librairies google maps de typescript : https://developers.google.com/maps/documentation/javascript/using-typescript
+
+
+# Exercice power apps avec API
+
+Créer une application avec power apps qui permet à l'aide d'un formulaire de :
+- Rechercher des films par titre et années (on utiliser l'api https://www.omdbapi.com/)
+- Afficher le resultat de la recherche sous format (poster, titre, genre, réalisateur, acteurs, notes )
