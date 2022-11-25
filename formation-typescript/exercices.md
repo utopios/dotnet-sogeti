@@ -93,5 +93,5 @@ Aide : Utiliser la librairies google maps de typescript : https://developers.goo
 # Exercice power apps avec API
 
 Créer une application avec power apps qui permet à l'aide d'un formulaire de :
-- Rechercher des films par titre et années (on utiliser l'api https://www.omdbapi.com/)
+- Rechercher des films par titre et année (on utilise l'api https://www.omdbapi.com/)
 - Afficher le resultat de la recherche sous format (poster, titre, genre, réalisateur, acteurs, notes )
