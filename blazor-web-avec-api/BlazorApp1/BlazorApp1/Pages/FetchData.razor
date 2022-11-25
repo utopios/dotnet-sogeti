@@ -1,5 +1,8 @@
 ﻿@page "/fetchdata"
+@using Microsoft.AspNetCore.Components.WebAssembly.Hosting
 @inject HttpClient Http
+
+
 
 <PageTitle>Weather forecast</PageTitle>
 
@@ -43,7 +46,7 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("http://localhost:5261/WeatherForecast");
+        forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>(@Environment.GetEnvironmentVariable("api_address")+"/WeatherForecast");
     }
 
     public class WeatherForecast
