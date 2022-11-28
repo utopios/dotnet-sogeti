@@ -1,0 +1,26 @@
+﻿@inject IProductService _productService;
+@page "/"
+@using CashRegistryBlazor.Interfaces
+
+<PageTitle>Produits</PageTitle>
+@foreach(Product p in Products ) {
+    <ProductComponent Product="@p"></ProductComponent>
+}
+
+@code {
+    public List<Product> Products { get; set; }
+
+    protected async override void OnInitialized()
+    {
+        try
+        {
+            Products = _productService.GetProducts();
+        }
+        catch (NotImplementedException e)
+        {
+            Products = await _productService.GetProductsAsync();
+
+        }
+        
+    }
+}

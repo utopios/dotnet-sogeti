@@ -1,0 +1,49 @@
+﻿@inject ProductService _productService;
+@inject NavigationManager navigationManager;
+@page "/form-product/{Id:int}"
+@page "/form-product"
+<h3>Formulaire Produit</h3>
+<EditForm class="container" Model="@Product" OnSubmit="@ValidForm">
+    <div class="row m-1 justify-content-center">
+        <InputText class="form-control p-1 col-9 " placeholder="Titre du produit" @bind-Value="@Product.Name"></InputText>
+    </div>
+    <div class="row m-1 justify-content-center">
+        <InputNumber class="form-control p-1 col-9 " placeholder="Prix du produit" @bind-Value="@Product.Price"></InputNumber>
+    </div>
+    <div class="row m-1 justify-content-center">
+        <InputNumber class="form-control p-1 col-9 " placeholder="Stock du produit" @bind-Value="@Product.Stock"></InputNumber>
+    </div>
+    <div class="row m-1 justify-content-center">
+        <InputTextArea class="form-control p-1 col-9 " placeholder="description du produit" @bind-Value="@Product.Description"></InputTextArea>
+    </div>
+    <div class="row m-1 justify-content-center">
+        <button class="btn btn-primary col p-1">Valider</button>
+    </div>
+</EditForm>
+@code {
+    [Parameter]
+    public int? Id {get;set;}
+    public Product? Product { get; set; }
+
+    protected override void OnInitialized()
+    {
+        if(Id == null) {
+            Product = new Product();
+        }else {
+            Product = _productService.GetProductById((int)Id);
+        }
+    }
+
+    public void ValidForm() {
+        if(Id == null) {
+            if (_productService.AddProduct(Product))
+            {
+                navigationManager.NavigateTo("/");
+            }
+        }
+        else {
+            navigationManager.NavigateTo("/");
+        }
+    }
+}
+ 

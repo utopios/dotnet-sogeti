@@ -1,0 +1,36 @@
+﻿@inject CartService _cartService;
+<div class="row m-1">
+    <div class="col-3">
+        @Product.Product.Name
+    </div>
+    <div class="col-3">
+        @Product.Product.Price €
+    </div>
+   
+        <input class="col-3 form-control" value="@Product.Qty" @oninput="(e) => UpdateQty(e.Value.ToString())">
+   
+    <div class="col-3">
+        @{
+            var totalProduct = Product.Product.Price * Product.Qty;
+        }
+        @totalProduct €
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public CartProduct? Product { get; set; }
+
+    [Parameter]
+    public EventCallback<bool> OnQtyChanged { get; set; }
+
+    public void UpdateQty(string qtyString) {
+        if (int.TryParse(qtyString, out int qty)) {
+            if(_cartService.UpdateQtyProduct(Product.Product.Id, qty))
+                OnQtyChanged.InvokeAsync(true);
+            OnQtyChanged.InvokeAsync(false);
+
+        }
+    }
+
+}

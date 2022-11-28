@@ -1,0 +1,23 @@
+﻿
+<div class="row m-1">
+    <div class="col-9">
+        Titre : @Product.Name 
+    </div>
+    <div class="col-3">
+        Prix : @Product.Price €
+    </div>
+</div>
+<div class="row m-1">
+    <NavLink href="@Link" class="btn col-4 p-1 btn-primary">Detail</NavLink>
+    <NavLink href="@LinkCart" class="btn col-4 p-1 btn-warning">Ajouter au panier</NavLink>
+    <NavLink href="@LinkEdit" class="btn col-4 p-1 btn-success">Modifier</NavLink>
+</div>
+@code {
+    [Parameter]
+    public Product? Product { get; set; }
+
+    public string Link { get => "/product/" + Product.Id; }
+    public string LinkCart { get => "/cart/" + Product.Id; }
+    public string LinkEdit { get => "/form-product/" + Product.Id; }
+
+}
