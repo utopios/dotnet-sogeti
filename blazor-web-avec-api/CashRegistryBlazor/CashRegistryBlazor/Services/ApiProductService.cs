@@ -14,7 +14,7 @@ public class ApiProductService : IProductService
     }
     public async Task<List<Product>?> GetProductsAsync(string search = null)
     {
-        return (List<Product>?)await _httpClient.GetFromJsonAsync("/product", typeof(List<Product>));
+        return (List<Product>?)await _httpClient.GetFromJsonAsync("/api/v1/product", typeof(List<Product>));
     }
 
     public List<Product> GetProducts(string search = null)

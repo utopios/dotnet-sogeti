@@ -1,6 +1,7 @@
 ﻿@inject IProductService _productService;
 @page "/"
 @using CashRegistryBlazor.Interfaces
+@inject HttpClient _httpClient
 
 <PageTitle>Produits</PageTitle>
 @foreach(Product p in Products ) {
@@ -9,6 +10,11 @@
 
 @code {
     public List<Product> Products { get; set; }
+
+    // protected override async Task OnInitializedAsync()
+    // {
+    //     Products = (List<Product>)await _httpClient.GetFromJsonAsync("http://127.0.0.1:/v1/product", typeof(List<Product>));
+    // }
 
     protected async override void OnInitialized()
     {
@@ -19,8 +25,10 @@
         catch (NotImplementedException e)
         {
             Products = await _productService.GetProductsAsync();
-
-        }
         
+        }
+
+       
+
     }
 }

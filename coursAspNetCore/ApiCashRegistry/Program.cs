@@ -13,7 +13,13 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("all", policyBuilder =>
+    {
+        policyBuilder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+    } );
+});
 builder.Services.AddScoped<UserRespository>();
 builder.Services.AddScoped<ProductRepository>();
 builder.Services.AddScoped<OrderRespository>();
@@ -32,7 +38,7 @@ builder.Services.AddAuthentication(a =>
     ValidateLifetime = true,
     ValidateAudience = true,
     ValidAudience = "sogeti",
-    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Bonjour je suis la clé de sécurité pour générer la JWT")),
+    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Bonjour je suis la clÃ© de sÃ©curitÃ© pour gÃ©nÃ©rer la JWT")),
 
 });
 builder.Services.AddAuthorization((builder) =>
@@ -53,6 +59,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors("all");
 app.UseAuthentication();
 app.UseAuthorization();
 
