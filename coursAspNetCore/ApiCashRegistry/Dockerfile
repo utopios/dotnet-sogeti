@@ -3,7 +3,7 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0-alpine as build
 WORKDIR /app
 COPY . .
 RUN dotnet restore
-RUN #dotnet build -o /app/build
+#RUN dotnet build -o /app/build
 RUN dotnet publish -c Release -o bin
 #RUN dotnet ef database update
 
