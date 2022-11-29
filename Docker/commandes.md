@@ -16,3 +16,6 @@ docker logs <id_container>
 
 ## Création d'une image à partir d'un dockerfile
 docker build -t <nom_image> <chemin_vers_le_dossier_avec_dockerfile>
+
+## Exercice 
+Démarrer l'api cash registry avec un dockerfile
