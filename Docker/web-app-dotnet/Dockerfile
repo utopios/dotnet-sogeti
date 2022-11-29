@@ -16,3 +16,10 @@ RUN rm packages-microsoft-prod.deb
 
 RUN apt update
 RUN apt install dotnet-sdk-6.0 -y
+
+WORKDIR /app
+
+COPY . .
+
+RUN dotnet restore
+RUN dotnet build 
