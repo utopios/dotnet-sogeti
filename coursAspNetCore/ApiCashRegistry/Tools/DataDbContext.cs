@@ -15,7 +15,7 @@ namespace ApiCashRegistry.Tools
         public DbSet<CashRegistryUser> Users { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Data Source=127.0.0.1;user Id=sa;password=Toto.Tata12/;Database=master;Integrated Security=False;Connect Timeout=30");
+            optionsBuilder.UseSqlServer(@"Data Source="+Environment.GetEnvironmentVariable("HOST_DATABASE")+";user Id=sa;password=Toto.Tata12/;Database=master;Integrated Security=False;Connect Timeout=30");
         }
     }
 }

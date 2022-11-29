@@ -3,3 +3,5 @@ WORKDIR /app
 COPY . .
 RUN dotnet restore
 RUN dotnet build -o /app/build
+#RUN dotnet ef database update
+CMD ["dotnet", "run"] 
