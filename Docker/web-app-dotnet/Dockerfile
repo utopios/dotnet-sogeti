@@ -22,4 +22,4 @@ WORKDIR /app
 COPY . .
 
 RUN dotnet restore
-RUN dotnet build 
+RUN dotnet build -o /app/build
