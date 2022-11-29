@@ -24,3 +24,13 @@ Démarrer l'api cash registry avec un dockerfile
 2. docker run -d -p 5183:5183 --name nom_container -it api-cash-registry-image sh
 3. docker exec -it nom_container sh
 4. à l'interieur du conteneur, on démarre l'application dotnet run
+
+
+## Pour se connecter à acr
+ az acr login --name m2iformation  
+
+## Pour donner un alias à une image
+docker tag api-cash-registry-image  m2iformation.azurecr.io/api-ihab:1
+
+## pour push une image sur un acr
+docker push m2iformation.azurecr.io/api-ihab:1
