@@ -19,3 +19,8 @@ docker build -t <nom_image> <chemin_vers_le_dossier_avec_dockerfile>
 
 ## Exercice 
 Démarrer l'api cash registry avec un dockerfile
+
+1. docker build -t api-cash-registry-image . 
+2. docker run -d -p 5183:5183 --name nom_container -it api-cash-registry-image sh
+3. docker exec -it nom_container sh
+4. à l'interieur du conteneur, on démarre l'application dotnet run

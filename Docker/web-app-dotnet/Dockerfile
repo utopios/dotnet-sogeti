@@ -18,7 +18,7 @@
 # RUN apt install dotnet-sdk-6.0 -y
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0-alpine
-WORKDIR /source
+
 
 WORKDIR /app
 
