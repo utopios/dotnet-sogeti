@@ -15,7 +15,7 @@ namespace ApiCashRegistry.Tools
         public DbSet<CashRegistryUser> Users { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Data Source="+Environment.GetEnvironmentVariable("HOST_DATABASE")+";user Id=sa;password=Toto.Tata12/;Database=master;Integrated Security=False;Connect Timeout=30");
+            optionsBuilder.UseSqlServer(@"Server=tcp:utopios-m2i.database.windows.net,1433;Initial Catalog=ihabdb;Persist Security Info=False;User ID=a80424cc-3b94-4477-a99f-c6107cc191a5;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Authentication=Active Directory Managed Identity;");
         }
     }
 }

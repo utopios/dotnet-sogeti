@@ -9,6 +9,6 @@ RUN dotnet publish -c Release -o bin
 
 FROM mcr.microsoft.com/dotnet/aspnet:6.0
 WORKDIR /app
-
+EXPOSE 80
 COPY --from=build /app/bin .
 CMD ["dotnet", "ApiCashRegistry.dll"] 

@@ -8,7 +8,7 @@ var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
-builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://127.0.0.1:5183") });
+builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://apicashregistry.azurewebsites.net") });
 // builder.Services.AddSingleton<ProductService>();
 builder.Services.AddSingleton<CartService>();
 builder.Services.AddScoped<IProductService, ApiProductService>();

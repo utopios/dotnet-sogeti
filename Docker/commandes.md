@@ -34,3 +34,19 @@ docker tag api-cash-registry-image  m2iformation.azurecr.io/api-ihab:1
 
 ## pour push une image sur un acr
 docker push m2iformation.azurecr.io/api-ihab:1
+
+# Exercice 
+
+Démarrer 3 conteneurs de service Azure
+
+1. Pour la base de données, ensuite appliquer une migration sur cette base de données.
+2. Api cash Registry
+3. Blazor cash Registry
+
+# Exercice 
+
+Démarrer 2 app service
+
+1. Pour la base de données, on utilise une instance de conteneurs.
+2. Une app service pour l'api cash registry.
+3. Une app service pour l'application blazor.
