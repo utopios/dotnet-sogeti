@@ -1,3 +1,4 @@
+using Azure.Identity;
 using Azure.Storage;
 using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
@@ -17,7 +18,8 @@ public class DemoAzureBlobController : ControllerBase
         //Par clé
         // StorageSharedKeyCredential keyCredential = new StorageSharedKeyCredential("utopios", "f+MNepU+9I2qqVi/DvBs/t0TN18kWYK5ogsFArG1c7/DfjMO2jiXrM22BuL+AbihidNMXMt++66d+AStFSOTYw==");
         // _blobServiceClient = new BlobServiceClient(new Uri("http://utopios.blob.core.windows.net"),keyCredential);
-        _blobServiceClient = new BlobServiceClient(@"DefaultEndpointsProtocol=https;AccountName=utopios;AccountKey=f+MNepU+9I2qqVi/DvBs/t0TN18kWYK5ogsFArG1c7/DfjMO2jiXrM22BuL+AbihidNMXMt++66d+AStFSOTYw==;EndpointSuffix=core.windows.net");
+        //_blobServiceClient = new BlobServiceClient(@"DefaultEndpointsProtocol=https;AccountName=utopios;AccountKey=f+MNepU+9I2qqVi/DvBs/t0TN18kWYK5ogsFArG1c7/DfjMO2jiXrM22BuL+AbihidNMXMt++66d+AStFSOTYw==;EndpointSuffix=core.windows.net");
+        _blobServiceClient = new BlobServiceClient(new Uri("https://utopios.blob.core.windows.net"),new ManagedIdentityCredential());
     }
 
     //Créate container 
