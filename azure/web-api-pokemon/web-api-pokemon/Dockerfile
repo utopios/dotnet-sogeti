@@ -5,10 +5,10 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["web-api-pokemon/web-api-pokemon.csproj", "web-api-pokemon/"]
-RUN dotnet restore "web-api-pokemon/web-api-pokemon.csproj"
+
 COPY . .
-WORKDIR "/src/web-api-pokemon"
+RUN dotnet restore "web-api-pokemon.csproj"
+
 RUN dotnet build "web-api-pokemon.csproj" -c Release -o /app/build
 
 FROM build AS publish
