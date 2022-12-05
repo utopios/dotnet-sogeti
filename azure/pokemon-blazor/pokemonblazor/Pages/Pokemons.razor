@@ -1,0 +1,44 @@
+@page "/"
+@using pokemonblazor.Services
+@using pokemonblazor.DTOs
+@inject LoginService _loginService;
+@inject NavigationManager _NavigationManager;
+@inject HttpClient _HttpClient
+<h3>Pokemons</h3>
+
+@if (PokemonsData != null)
+{
+    @foreach (PokemonResponseDTO pokemon in PokemonsData)
+    {
+        <div>
+            @pokemon.Name
+            <div>
+                @foreach (ImageDto img in pokemon.Images)
+                {
+                    <img src="@img.Url" />
+                }
+            </div>
+        </div>
+    }
+}
+
+@code {
+    public List<PokemonResponseDTO>? PokemonsData { get; set; }
+    
+    protected async override void OnInitialized()
+    {
+        if (!_loginService.IsLogged)
+        {
+            _NavigationManager.NavigateTo("Login"); 
+            
+        }
+        else
+        {
+            _HttpClient.DefaultRequestHeaders.Add("Authorization", "Bearer "+_loginService.Token);
+            PokemonsData = await _HttpClient.GetFromJsonAsync<List<PokemonResponseDTO>>("/pokemon");
+            StateHasChanged();
+        }
+        
+    }
+
+}

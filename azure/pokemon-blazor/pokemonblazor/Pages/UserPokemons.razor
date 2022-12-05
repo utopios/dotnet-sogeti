@@ -1,0 +1,16 @@
+@page "/UserPokemons"
+@using pokemonblazor.Services
+@inject LoginService _loginService;
+@inject NavigationManager _NavigationManager;
+<h3>UserPokemons</h3>
+
+@code {
+    protected override void OnInitialized()
+    {
+        if (!_loginService.IsLogged)
+        {
+            _NavigationManager.NavigateTo("Login");     
+        }
+        
+    }
+}

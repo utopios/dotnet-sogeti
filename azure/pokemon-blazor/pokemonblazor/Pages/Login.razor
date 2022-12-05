@@ -1,0 +1,48 @@
+@page "/Login"
+@using pokemonblazor.Services
+@using System.Diagnostics
+@inject HttpClient _HttpClient
+@inject LoginService _LoginService
+@inject NavigationManager _Navigation
+<h3>Login</h3>
+<div class="container">
+    <EditForm Model="this" OnSubmit="SubmitLogin">
+
+        <div class="row m-1">
+            <div class="col-6">
+                <InputText class="p-1 form-control" @bind-Value="Name" placeholder="Votre nom"></InputText>
+            </div>
+
+        </div>
+        <div class="row m-1">
+            <div class="col-6">
+                <InputText type="password" class="col-6 p-1 form-control" @bind-Value="Password" placeholder="Votre mot de passe"></InputText>
+            </div>
+
+        </div>
+        <div class="row m-1">
+            <button class="col-6 p-1 btn btn-danger" type="submit">Valider</button>
+        </div>
+    </EditForm>
+</div>
+
+@code {
+    public string Name { get; set; }
+    public string Password { get; set; }
+
+    public async void SubmitLogin()
+    {
+        MultipartFormDataContent content = new MultipartFormDataContent();
+        content.Add(new StringContent(Name), "name");
+        content.Add(new StringContent(Password), "password");
+        HttpResponseMessage responseMessage = await _HttpClient.PostAsync("/user/login", content);
+        string token = await responseMessage.Content.ReadAsStringAsync();
+        if (token != null)
+        {
+            _LoginService.IsLogged = true;
+            _LoginService.Token = token;
+            _Navigation.NavigateTo("");
+        }
+        
+    }
+}
