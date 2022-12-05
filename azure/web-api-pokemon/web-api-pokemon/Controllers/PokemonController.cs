@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using web_api_pokemon.DTOs;
 using web_api_pokemon.Services;
@@ -18,6 +19,7 @@ public class PokemonController : ControllerBase
        
     }
 
+    [Authorize("admin")]
     [HttpPost]
     public IActionResult Post([FromBody] PokemonRequestDTO pokemonRequestDto)
     {
@@ -32,6 +34,7 @@ public class PokemonController : ControllerBase
         }
     }
 
+    [Authorize("admin")]
     [HttpPut("{id}/image")]
     public IActionResult Put(int id, IFormFile image)
     {
@@ -45,12 +48,13 @@ public class PokemonController : ControllerBase
         }
     }
 
+    [Authorize("user")]
     [HttpGet]
     public IActionResult Get()
     {
         return Ok(_pokemonService.GetAll());
     }
-
+    [Authorize("user")]
     [HttpGet("{id}")]
     public IActionResult Get(int id)
     {
@@ -63,7 +67,7 @@ public class PokemonController : ControllerBase
             return NotFound(new { Message = e.Message });
         }
     }
-
+    [Authorize("user")]
     [HttpGet("random")]
     public IActionResult RandomPokemon()
     {

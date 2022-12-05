@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using web_api_pokemon.Models;
 using web_api_pokemon.Tools;
 
@@ -22,5 +23,10 @@ public class UserAppRepository : BaseRepository<UserApp>
     public override List<UserApp> FindAll()
     {
         throw new NotImplementedException();
+    }
+
+    public UserApp SearchOne(Func<UserApp, bool> searchMethode)
+    {
+        return _dataBaseContext.Users.Include(u => u.Role).Where(searchMethode).First();
     }
 }

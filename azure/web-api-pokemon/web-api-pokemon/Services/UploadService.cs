@@ -17,7 +17,7 @@ public class UploadService : IUpload
     public string UploadImage(IFormFile image)
     {
         string url = "https://utopios.blob.core.windows.net/blob-pokemon-ihab/";
-        string fileName = Guid.NewGuid().ToString()+ "-"+image.FileName;
+        string fileName = Guid.NewGuid()+ "-"+image.FileName;
         BlobClient blobClient = _blobContainerClient.GetBlobClient(fileName);
 
         try
