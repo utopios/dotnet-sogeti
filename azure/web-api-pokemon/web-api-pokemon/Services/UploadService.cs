@@ -1,6 +1,8 @@
+using web_api_pokemon.Services.Interfaces;
+
 namespace web_api_pokemon.Services;
 
-public class UploadService
+public class UploadService : IUpload
 {
     
 }
