@@ -23,7 +23,7 @@ public class PokemonRepository : BaseRepository<Pokemon>
     
     public Pokemon? FindRandom()
     {
-        return _dataBaseContext.Pokemons.OrderBy(r => Guid.NewGuid()).Take(1).First();
+        return _dataBaseContext.Pokemons.Include(p => p.Images).OrderBy(r => Guid.NewGuid()).Take(1).First();
     }
 
     public override List<Pokemon> FindAll()

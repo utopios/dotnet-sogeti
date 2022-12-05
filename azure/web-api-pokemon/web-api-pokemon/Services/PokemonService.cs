@@ -36,6 +36,7 @@ public class PokemonService
             {
                 response.Images.Add(new ImageDto(){Url = i.Url});
             });
+            responseDtos.Add(response);
         });
         return responseDtos;
     }
