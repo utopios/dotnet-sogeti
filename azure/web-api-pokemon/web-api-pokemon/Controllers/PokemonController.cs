@@ -11,12 +11,13 @@ namespace web_api_pokemon.Controllers;
 public class PokemonController : ControllerBase
 {
     private PokemonService _pokemonService;
+    private UserAppService _userAppService;
 
-
-    public PokemonController(PokemonService pokemonService)
+    public PokemonController(PokemonService pokemonService, UserAppService userAppService)
     {
         _pokemonService = pokemonService;
-       
+        _userAppService = userAppService;
+
     }
 
     [Authorize("admin")]
@@ -73,7 +74,9 @@ public class PokemonController : ControllerBase
     {
         try
         {
-            return Ok(_pokemonService.GetRandom());
+            PokemonResponseDTO pokemonResponseDto = _pokemonService.GetRandom();
+            _userAppService.AddPokemon(pokemonResponseDto.Id);
+            return Ok(pokemonResponseDto);
         }
         catch (Exception e)
         {

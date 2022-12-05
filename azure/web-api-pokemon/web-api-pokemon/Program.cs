@@ -31,6 +31,7 @@ builder.Services.AddScoped<UserAppService>();
 builder.Services.AddScoped<ILogin,LoginJwtService>();
 builder.Services.AddScoped<IPasswordHash,PasswordHashService>();
 builder.Services.AddScoped<IUpload,UploadService>();
+builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddAuthentication(a =>
 {
