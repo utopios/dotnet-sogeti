@@ -1,4 +1,6 @@
+using web_api_pokemon.Models;
 using web_api_pokemon.Repositories;
+using web_api_pokemon.Repositories.Interfaces;
 using web_api_pokemon.Services;
 using web_api_pokemon.Services.Interfaces;
 using web_api_pokemon.Tools;

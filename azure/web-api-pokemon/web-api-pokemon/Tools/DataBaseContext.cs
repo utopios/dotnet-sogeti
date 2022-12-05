@@ -7,7 +7,7 @@ public class DataBaseContext : DbContext
 {
     public DbSet<RoleApp> Roles { get; set; }
     public DbSet<UserApp> Users { get; set; }
-    public DbSet<Pokemon> Pokemons { get; set; }
+    public DbSet<Pokemon?> Pokemons { get; set; }
     
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

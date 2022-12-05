@@ -4,7 +4,7 @@ namespace web_api_pokemon.Repositories;
 
 public abstract class BaseRepository<T>
 {
-    private DataBaseContext _dataBaseContext;
+    protected DataBaseContext _dataBaseContext;
 
     protected BaseRepository(DataBaseContext dataBaseContext)
     {
@@ -13,7 +13,7 @@ public abstract class BaseRepository<T>
     
     public abstract bool Save(T element);
     public abstract T FindById(int id);
-    public abstract List<T> FindAllById();
+    public abstract List<T> FindAll();
 
     public bool Update()
     {

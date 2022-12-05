@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using web_api_pokemon.Models;
 using web_api_pokemon.Tools;
 
@@ -9,18 +10,24 @@ public class PokemonRepository : BaseRepository<Pokemon>
     {
     }
 
-    public override bool Save(Pokemon element)
+    public override bool Save(Pokemon? element)
     {
-        throw new NotImplementedException();
+        _dataBaseContext.Pokemons.Add(element);
+        return Update();
     }
 
-    public override Pokemon FindById(int id)
+    public override Pokemon? FindById(int id)
     {
-        throw new NotImplementedException();
+        return _dataBaseContext.Pokemons.Include(p => p.Images).FirstOrDefault(p => p != null && p.Id == id);
+    }
+    
+    public Pokemon? FindRandom()
+    {
+        return _dataBaseContext.Pokemons.OrderBy(r => Guid.NewGuid()).Take(1).First();
     }
 
-    public override List<Pokemon> FindAllById()
+    public override List<Pokemon> FindAll()
     {
-        throw new NotImplementedException();
+        return _dataBaseContext.Pokemons.Include(p => p.Images).ToList();
     }
 }

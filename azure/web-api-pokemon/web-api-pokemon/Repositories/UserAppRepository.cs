@@ -19,7 +19,7 @@ public class UserAppRepository : BaseRepository<UserApp>
         throw new NotImplementedException();
     }
 
-    public override List<UserApp> FindAllById()
+    public override List<UserApp> FindAll()
     {
         throw new NotImplementedException();
     }
