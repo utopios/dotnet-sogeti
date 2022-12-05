@@ -1,0 +1,71 @@
+@page "/FormPokemon"
+@using pokemonblazor.Services
+@using pokemonblazor.DTOs
+@using System.Net
+@using System.Net.Http.Headers
+<h3>FormPokemon</h3>
+@inject LoginService _loginService;
+@inject NavigationManager _NavigationManager;
+@inject HttpClient _HttpClient
+@if (PokemonId == null)
+{
+    <EditForm Model="this" OnSubmit="CreatePokemon">
+        <div>
+            <InputText placeholder="Nom pokemon" @bind-Value="Name"></InputText>
+        </div>
+        <div>
+            <button type="submit">Valider</button>
+        </div>
+    </EditForm>
+}
+else
+{
+    <EditForm  Model="this">
+        <div>
+            <InputFile OnChange="@FileChanged"></InputFile>
+        </div>
+        <div>
+            @Result
+        </div>
+    </EditForm>
+}
+
+
+@code {
+    public string Name { get; set; }
+    public string Result { get; set; }
+    public int? PokemonId { get; set; }
+
+    protected override void OnInitialized()
+    {
+        // _HttpClient.DefaultRequestHeaders.Add("Authorization", "Bearer "+_loginService.Token);
+    }
+
+    public async void FileChanged(InputFileChangeEventArgs e)
+    {
+        foreach (IBrowserFile file in e.GetMultipleFiles())
+        {
+            MultipartFormDataContent content = new MultipartFormDataContent();
+            HttpContent contentFile = new StreamContent(file.OpenReadStream());
+            contentFile.Headers.ContentType = new MediaTypeHeaderValue(file.ContentType);
+            content.Add(new StreamContent(file.OpenReadStream()), "\"image\"",fileName: file.Name );
+            
+            HttpResponseMessage response = await _HttpClient.PutAsync("/pokemon/" + PokemonId + "/image", content);
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                Result = "Image envoyée";
+                StateHasChanged();
+            }
+        }
+    }
+
+    public async void CreatePokemon()
+    {
+        PokemonRequestDTO requestDto = new PokemonRequestDTO() { Name = Name };
+        HttpResponseMessage responseMessage = await _HttpClient.PostAsJsonAsync("/pokemon", requestDto);
+        PokemonResponseDTO responseDto = await responseMessage.Content.ReadFromJsonAsync<PokemonResponseDTO>();
+        PokemonId = responseDto.Id;
+        StateHasChanged();
+
+    }
+}
